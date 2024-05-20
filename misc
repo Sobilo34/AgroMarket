@@ -1,0 +1,62 @@
+# install mysql 5.7*
+sudo wget -O mysql57 https://raw.githubusercontent.com/nuuxcode/alx-system_engineering-devops/master/scripts/mysql57 && sudo chmod +x mysql57 &&  sudo ./mysql57
+
+# installs 
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install python3-dev
+sudo apt-get install zlib1g-dev
+sudo pip3 install mysqlclient
+# if mysqlclient fails, use the below code
+sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+
+sudo pip3 install SQLAlchemy
+
+
+# setup dev users and database for AgroMarket
+CREATE DATABASE IF NOT EXISTS agroMarket_dev_db;
+CREATE USER IF NOT EXISTS 'agroMarket_dev'@'localhost' IDENTIFIED BY 'agroMarket_dev_secret';
+GRANT ALL PRIVILEGES ON `agroMarket_dev_db`.* TO 'agroMarket_dev'@'localhost';
+GRANT SELECT ON `performance_schema`.* TO 'agroMarket_dev'@'localhost';
+FLUSH PRIVILEGES;
+
+# to run the app, use the following environment variables
+AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev
+
+# to use in the shell environment, do the following
+AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev python3
+
+# now you are in the environment, you can do the following using User model
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from models import storage
+>>> from models.user import User
+>>> data = {'first_name': 'Dennis', 'last_name': 'Chiedu', 'email': 'dennis@gmail.com', 'password': 'asdfehjkl;'}
+>>> dennis = User(**data)
+>>> dennis
+<models.user.User object at 0x7fc8439fc880>
+# save the obj to the database using save method
+>>> dennis.save()
+>>> dennis.first_name
+'Dennis'
+>>> dennis.id
+'efa7cceb-5a91-44dc-83fa-0f1407f8cc71'
+>>> dennis.to_dict()
+{'first_name': 'Dennis', 'last_name': 'Chiedu', 'email': 'dennis@gmail.com', 'created_at': '2024-05-19T03:46:21.256906', 'updated_at': '2024-05-19T03:46:43.905709', 'id': 'efa7cceb-5a91-44dc-83fa-0f1407f8cc71', '__class__': 'User'}
+# you can get the user using the id
+>>> api = storage.get(User, 'efa7cceb-5a91-44dc-83fa-0f1407f8cc71')
+>>> api.to_dict()
+{'first_name': 'Dennis', 'last_name': 'Chiedu', 'email': 'dennis@gmail.com', 'created_at': '2024-05-19T03:46:21.256906', 'updated_at': '2024-05-19T03:46:43.905709', 'id': 'efa7cceb-5a91-44dc-83fa-0f1407f8cc71', '__class__': 'User'}
+>>> all = storage.count(User)
+>>> all
+1
+
+AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev python3
+Python 3.8.10 (default, Nov 22 2023, 10:22:35)
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from models import storage
+>>> from models.user import User
+>>> from models.category import Category
+
+
+
+

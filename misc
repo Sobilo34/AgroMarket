@@ -57,6 +57,17 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> from models.user import User
 >>> from models.category import Category
 
-
+from models.category import Category
+>>> from models import storage
+>>> from models.user import User
+>>> d = User(first_name="Dennis", last_name="Chiedu", email="dennis@gmail.com", phone="+2348060449322")
+>>> d.set_password("gentle")
+>>> d._password
+'$2b$12$O5/akQt0HIJoF1ylyTAZou0H3b.THcGIsKdaHabIGljBfFnXaUbHG'
+>>> d.save()
+>>> d.is_farmer
+False
+>>> d.phone
+'+2348060449322'
 
 

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+</head>
+<link rel="stylesheet" href="../styles/landing.css">
+<style>
+    body {
+        overflow-y: hidden;
+    }
+
+</style>
+<body>
+    <img src="../images/farm 1.jpg" alt="" id="bag_img">
+    <div class="cus_overlay"></div>
+    <h1 id="caption">Agrospace</h1><br>
+
+    <img src="../images/Farmer hub logo.jpg" alt="Our logo" id="heda_logo">
+    <div class="form_bag">
+    <h2 id="log_in">Do you want to Sign in as a Buyer or Seller?</h2>
+
+    <div class="legalt">
+        <form method="get" action="../templates/login.html" style="column-count: 2;">
+            <input type="radio" name="account" value="Personal Account" class="pers_val" >
+            <h1 id="for" value="Personal Account" >Buyer</h1>
+            <input type="radio" name="account" value="Business Account" class="bus_val">
+            <h1 id="fot">Seller</h1>
+            <br>
+            <input type="submit" src="../templates/login.html" value="Next" class="next_but">
+        </form>
+    </div>
+    </div>
+</body>
+</html>

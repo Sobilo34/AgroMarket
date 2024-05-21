@@ -1,0 +1,241 @@
+header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+}
+
+header #agroMarket_logo {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-top: -5px;
+}
+
+#my_profile {
+    margin-top: 20px;
+    margin-left: 70%;
+}
+
+header #my_profile #profile_image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+header #my_profile h5 {
+    margin-top: 5px;
+    margin-left: -10px;
+}
+
+header h1 {
+    margin-left: 20px;
+    margin-top: 30px;
+    color: rgb(58, 61, 58);
+}
+
+#side_bar {
+    position: relative;
+    top: -60px;
+    left: -45px;
+    background-color:  rgb(242, 250, 242);
+    border: 1px solid rgb(3, 27, 3);
+    height: 1500px;
+    width: 320px;
+    border-radius: 50px;
+}
+
+.side_bar_content {
+    margin-left: 45px;
+    margin-top: 10px;
+    width: 250px;
+    height: 100%;
+}
+
+
+#side_bar .search_bar {
+    margin: 5%;
+    height: 40px;
+    width: 220px;
+    border-radius: 5px;
+}
+
+.bar_links {
+    margin-top: 40px;
+    margin-left: 20px;
+    display: flex;
+    width: 150px;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(3, 27, 3);
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.nav_bar {
+    background: linear-gradient(white, white, rgb(242, 250, 242));
+    height: 50px;
+    width: 79%;
+    max-width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+    padding-left: 20px;
+    margin-left: 20%;
+    margin-top: 30px;
+}
+  
+.nav_bar a {
+    text-decoration: none;
+    color: rgb(3, 27, 3);
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.nav_bar a:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(3, 27, 3);
+    text-decoration-thickness: 4px;
+}
+
+
+.dashboard_container {
+    position: relative;
+    top: 30px;
+    background-color:  rgb(242, 250, 242);
+    color: rgb(3, 27, 3);
+    border-radius: 10px;
+    height: 340px;
+    width: 75%;
+    float: right;
+    margin: 20px;
+}
+
+.dashboard_container h2 {
+    margin: 3%;
+}
+.dasb_content {
+    margin-top: -2%;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.dasb_status {
+    position: relative;
+    top: 0px;
+    left: -30px;
+    height: 100px;
+    width: 45%;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.dasb_status img {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    height: 30px;
+    width: 30px;
+    margin: 5%;
+    margin-left: 20%;
+}
+
+.dasb_status h4 {
+    position: absolute;
+    left: 35%;
+    top: 20%;
+}
+
+.dasb_status button {
+    position: absolute;
+    left: 40%;
+    top: 70%;
+    height: 20px;
+    width: 100px;
+}
+
+.product_container {
+    position: relative;
+    top: 30px;
+    background-color:  rgb(242, 250, 242);
+    color: rgb(3, 27, 3);
+    border-radius: 10px;
+    height: 800px;
+    width: 75%;
+    float: right;
+    margin: 20px;
+}
+
+.product_container h2 {
+    margin: 3%;
+}
+
+.product_container iframe {
+    height: 650;
+    width: 100%;
+}
+.product_content {
+    margin-top: -2%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+    color: azure;
+}
+
+.a_product {
+    background-color: rgb(3, 27, 3);
+    height: 300px;
+    width: 280px;
+    font-family: calibri;
+    margin-top: 20px;
+    border-radius: 10px;
+
+}
+
+.a_product img {
+    height: 200px;
+    width: 280px;
+    border-radius: 10px;
+}
+.a_product h5 {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#des_caption {
+    font-size: 20px;
+}
+
+footer {
+    position: relative;
+    top: 0px;
+    height: 250px;
+    width: 100%;
+    background-color: rgb(19, 122, 19);
+    align-content: center;
+  }
+  
+  footer h2 {
+    color: azure;
+    text-align: center;
+  }
+  
+  footer .down_logo {
+    margin-left: 30%;
+    margin-top: 50px;
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+  }
+  footer ._logo {
+    height: 50px;
+    width: 50px;
+  }

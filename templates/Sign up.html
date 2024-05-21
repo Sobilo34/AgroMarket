@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<link rel="stylesheet" href="../styles/landing.css">
+<style>
+    body {
+        overflow-y: hidden;
+    }
+
+    .crt_sub {
+        position: relative;
+        top: 30px;
+        left: 33%;
+        background-color: rgb(6, 22, 8);
+        border: 2px solid rgb(6, 22, 8);
+        border-radius: 5px;
+        height: 30px;
+        width: 200px;
+        font-size: larger;
+        font-family: fantasy;
+        color: wheat;
+    }
+</style>
+<body>
+    <img src="../images/farm 1.jpg" alt="" id="bag_img">
+    <div class="cus_overlay"></div>
+    <h1 id="caption">Agrospace</h1><br>
+
+    <img src="../images/Farmer hub logo.jpg" alt="Our logo" id="heda_logo">
+    <div class="form_bag">
+        <h2 id="log_in">Get started now!</h2>
+
+        <div class="legalt">
+            <form method="get" action="../templates/Landing.html">
+                <h3 id="option_caption">Username/Business name</h3>
+                <input type="text" name="username" id="option_con">
+                <h3 id="option_caption">Email/Phone Number</h3>
+                <input type="email" name="email" id="option_con"> 
+                <h3 id="option_caption">Password</h3>
+                <input type="password" name="password" id="option_con"><br>
+                <input type="submit" value="Create Account" class="crt_sub">
+                <h4 style="margin-top: 50px; text-align: center; color: black;">Already have an Account? <a href="../templates/login.html"> Login</a></h4>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

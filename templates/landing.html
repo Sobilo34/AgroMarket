@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+<head>
+    <title>My first script</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../styles/landing.css">
+<script type="text/javascript" src="../scripts/landing.js"></script>
+<body>
+
+  <img src="../images/Farmer hub logo.jpg" alt="Our logo" id="top_logo">
+  <div class="overlay"></div>
+  <span class="banner_content">
+    <h2><i>Harvest the future: Your one-stop shop for buying and selling farm produce</i></h2>
+    <div class="topnav">
+        <a class="active1" href="#home"><h4>BUY</h4></a>
+        <a class="active2" href="#about"><h4>SELL</h4></a>
+        <input type="text" placeholder="        Search Catalogue..">
+    </div>
+  </span>
+
+  <div id="heda">
+      <span id="lolo">
+        <a href="../templates/bilal.html">Join Community</a>
+        <a href="../templates/sign.html">Gain Customers</a>
+        <a href="../templates/sign.html">Sell Product</a>
+        <a href="../templates/sign.html">Buy Product</a>
+      </span>
+
+      <span class="heda_links">
+        <a href="#"><h4 id="crat">Create Account</h4></a>
+        <br>
+        <img src="../images/MAC.png" alt="my account" id="crat_img">
+        <a href="../templates/signin.html"><h3 id="exat">My Account</h3></a>
+      </span>
+
+      <div class="header_caption">
+        <h1>AgroMarket</h1><br>
+        <h5>Join Now, Earn better</h5>
+      </div>
+      
+  </div>
+
+  <div class="sliding">
+      <div class="mySlides fade">
+      <img src="../images/farm 1.jpg" style="width: 100%; height: 550px;">
+      </div>
+      <div class="mySlides fade">
+      <img src="../images/farm 5 .jpg" style="width: 100%; height: 550px;">
+      </div>
+      <div class="mySlides fade">
+      <img src="../images/farm 3.jpg" style="width: 100%; height: 550px;">
+      </div>
+      <div class="mySlides fade">
+      <img src="../images/farm 4.jpg" style="width: 100%; height: 550px;">
+      </div>
+  </div>
+
+
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span>
+      </div>
+            </div>
+      <script>
+          let slideIndex = 0;
+          showSlides();
+          
+          function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 5000);
+          }
+          </script>
+  </div>
+
+  <div class="page_des">
+    <h1>About Us</h1>
+    <hr id="hr_1">
+    <hr id="hr_2">
+
+    <h4>
+      Agrospace Nigeria is an online market confluence for farmers and to sell farm produce to differnt customers at a good price.
+      It enables the farmers to fnfd their best business partner and sell at a good rate.
+      Agrospace Nigeria offers more features like enabling investment in farm business,
+      offering farming orinetation for farmers and building a community for buyers and sellers of farm produce.
+      Agrospace Nigeria is an online market confluence for farmers and to sell farm produce to differnt customers at a good price.
+      It enables the farmers to fnfd their best business partner and sell at a good rate.
+      Agrospace Nigeria offers more features like enabling investment in farm business,
+      offering farming orinetation for farmers and building a community for buyers and sellers of farm produce. 
+    </h4>
+  </div>
+
+  <div id="side_bar"></div>
+
+  <div class="gallery">
+    <!-- First column -->
+      <div class="first_col">
+    
+        <div class="container1">
+          <img src="../images/../images/veg.jpg" alt="someting" class="image1">
+          <div class="overlay1">
+            <div class="text1">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+    
+        <div class="container2">
+          <img src="../images/../images/veg.jpg" alt="someting" class="image2">
+          <div class="overlay2">
+            <div class="text2">
+                <h3>Image Description</h3>
+                <h5>2020 Inter-house Sport</h5>
+            </div>
+          </div> 
+        </div>
+    
+        <div class="container3">
+          <img src="../images/veg.jpg" alt="someting" class="image3">
+          <div class="overlay3">
+            <div class="text3">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+    
+        <div class="container4">
+          <img src="../images/veg.jpg" alt="someting" class="image4">
+          <div class="overlay4">
+            <div class="text4">
+              <h3>Image Description</h3>
+              <h5>Excursion to Badagry</h5>
+            </div>
+          </div> 
+        </div>
+    
+        <div class="container5">
+          <img src="../images/veg.jpg" alt="someting" class="image5">
+          <div class="overlay5">
+            <div class="text5">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+            
+            <div class="container6">
+              <img src="../images/veg.jpg" alt="someting" class="image6">
+              <div class="overlay6">
+                <div class="text6">
+                  <h3>Image Description</h3>
+                  <h5>2020 Inter-house Sport</h5>
+                </div>
+              </div> 
+            </div>
+            
+            <div class="container7">
+              <img src="../images/veg.jpg" alt="someting" class="image7">
+              <div class="overlay7">
+                <div class="text7">
+                  <h3>Image Description</h3>
+                  <h5>Excursion to Badagry</h5>
+                </div>
+              </div> 
+            </div>
+      </div>
+    </div>
+
+    <!-- Second Column -->
+
+    <div class="gallery2">
+      <div class="second_col">
+
+        <div class="container1">
+          <img src="../images/veg.jpg" alt="someting" class="image1">
+          <div class="overlay1">
+            <div class="text1">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container2">
+          <img src="../images/veg.jpg" alt="someting" class="image2">
+          <div class="overlay2">
+            <div class="text2">
+                <h3>Image Description</h3>
+                <h5>2020 Inter-house Sport</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container3">
+          <img src="../images/veg.jpg" alt="someting" class="image3">
+          <div class="overlay3">
+            <div class="text3">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container4">
+          <img src="../images/veg.jpg" alt="someting" class="image4">
+          <div class="overlay4">
+            <div class="text4">
+              <h3>Image Description</h3>
+              <h5>Excursion to Badagry</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container5">
+          <img src="../images/veg.jpg" alt="someting" class="image5">
+          <div class="overlay5">
+            <div class="text5">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+            
+            <div class="container6">
+              <img src="../images/veg.jpg" alt="someting" class="image6">
+              <div class="overlay6">
+                <div class="text6">
+                  <h3>Image Description</h3>
+                  <h5>2020 Inter-house Sport</h5>
+                </div>
+              </div> 
+            </div>
+            
+            <div class="container7">
+              <img src="../images/veg.jpg" alt="someting" class="image7">
+              <div class="overlay7">
+                <div class="text7">
+                  <h3>Image Description</h3>
+                  <h5>Excursion to Badagry</h5>
+                </div>
+              </div> 
+            </div>
+      </div>
+    </div>
+
+    <!-- Third Column -->
+
+    <div class="gallery3">
+      <div class="third_col">
+
+        <div class="container1">
+          <img src="../images/veg.jpg" alt="someting" class="image1">
+          <div class="overlay1">
+            <div class="text1">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container2">
+          <img src="../images/veg.jpg" alt="someting" class="image2">
+          <div class="overlay2">
+            <div class="text2">
+                <h3>Image Description</h3>
+                <h5>2020 Inter-house Sport</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container3">
+          <img src="../images/veg.jpg" alt="someting" class="image3">
+          <div class="overlay3">
+            <div class="text3">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container4">
+          <img src="../images/veg.jpg" alt="someting" class="image4">
+          <div class="overlay4">
+            <div class="text4">
+              <h3>Image Description</h3>
+              <h5>Excursion to Badagry</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container5">
+          <img src="../images/veg.jpg" alt="someting" class="image5">
+          <div class="overlay5">
+            <div class="text5">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+            
+        <div class="container6">
+          <img src="../images/veg.jpg" alt="someting" class="image6">
+          <div class="overlay6">
+            <div class="text6">
+              <h3>Image Description</h3>
+              <h5>2020 Inter-house Sport</h5>
+            </div>
+          </div> 
+        </div>
+
+          <div class="container7">
+            <img src="../images/veg.jpg" alt="someting" class="image7">
+            <div class="overlay7">
+              <div class="text2">
+                  <h3>Image Description</h3>
+                  <h5>2020 Inter-house Sport</h5>
+              </div>
+            </div> 
+          </div>
+
+      </div>
+    </div>
+    
+    <!-- Fourth Column -->
+
+    <div class="gallery4">
+      <div class="fourth_col">
+
+        <div class="container1">
+          <img src="../images/veg.jpg" alt="someting" class="image1">
+          <div class="overlay1">
+            <div class="text1">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+        </div>
+
+        <div class="container2">
+          <img src="../images/veg.jpg" alt="someting" class="image2">
+          <div class="overlay2">
+            <div class="text2">
+                <h3>Image Description</h3>
+                <h5>2020 Inter-house Sport</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container3">
+          <img src="../images/veg.jpg" alt="someting" class="image3">
+          <div class="overlay3">
+            <div class="text3">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container4">
+          <img src="../images/veg.jpg" alt="someting" class="image4">
+          <div class="overlay4">
+            <div class="text4">
+              <h3>Image Description</h3>
+              <h5>Excursion to Badagry</h5>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container5">
+          <img src="../images/veg.jpg" alt="someting" class="image5">
+          <div class="overlay5">
+            <div class="text5">
+              <h3>Image Description</h3>
+              <h5>2019 Footbal Competion</h5>
+            </div>
+          </div> 
+        </div>
+            
+            <div class="container6">
+              <img src="../images/veg.jpg" alt="someting" class="image6">
+              <div class="overlay6">
+                <div class="text6">
+                  <h3>Image Description</h3>
+                  <h5>2020 Inter-house Sport</h5>
+                </div>
+              </div> 
+            </div>
+            
+            <div class="container7">
+              <img src="../images/veg.jpg" alt="someting" class="image7">
+              <div class="overlay7">
+                <div class="text7">
+                  <h3>Image Description</h3>
+                  <h5>Excursion to Badagry</h5>
+                </div>
+              </div> 
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h2>Contact Us</h2>
+    <div class="down_logo">
+      <a href="adigwedennis@gmail.com"><img src="../images/email.png" alt="email_logo" class="_logo"></a>
+      <a href="+2348104910518"><img src="../images/Phone.png" alt="email_logo" class="_logo"></a>
+      <a href="+2349134422033"><img src="../images/whatsapp.png" alt="email_logo" class="_logo"></a>
+      <a href="#"><img src="../images/X.png" alt="email_logo" class="_logo"></a>
+      <a href="https://github.com/Sobilo34/AgroMarket"><img src="../images/github.png" alt="email_logo" class="_logo"></a>
+    </div>
+  </footer>
+</body>
+
+</html>

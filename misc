@@ -49,6 +49,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> all
 1
 
+# command with the environment variables to start up python shell to test our models
 AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev python3
 Python 3.8.10 (default, Nov 22 2023, 10:22:35)
 [GCC 9.4.0] on linux
@@ -69,5 +70,8 @@ from models.category import Category
 False
 >>> d.phone
 '+2348060449322'
+
+# command to start up our api
+AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev AGRO_API_HOST=0.0.0.0 AGRO_API_PORT=5000 python3 -m api.v1.app
 
 

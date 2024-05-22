@@ -5,13 +5,14 @@ AgroMarket is a marketplace where farmers can sell their produce. This project w
 
 ## Contributors
 - [Adigwe Dennis](https://github.com/talk2dennis)
-    ![Adigwe Dennis](https://github.com/talk2dennis.png){:height="100px" width="100px"}
-    
+  <img src="https://github.com/talk2dennis.png" alt="Adigwe Dennis" height="50" width="50">
+
 - [Gideon Oba](https://github.com/Deyonoba)
-    ![Gideon Oba](https://github.com/Deyonoba.png){:height="100px" width="100px"}
-    
+  <img src="https://github.com/Deyonoba.png" alt="Gideon Oba" height="50" width="50">
+
 - [Bilal Oyeleke](https://github.com/Sobilo34)
-    ![Bilal Oyeleke](https://github.com/Sobilo34.png){:height="100px" width="100px"}
+  <img src="https://github.com/Sobilo34.png" alt="Bilal Oyeleke" height="50" width="50">
+
 
 ## Project Description
 AgroMarket is a web-based platform that connects farmers with potential buyers. It provides a convenient and efficient way for farmers to showcase and sell their produce directly to consumers. The platform also offers features such as product categorization, search functionality, and secure payment options to enhance the user experience.

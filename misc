@@ -63,6 +63,8 @@ from models.category import Category
 >>> from models.user import User
 >>> d = User(first_name="Dennis", last_name="Chiedu", email="dennis@gmail.com", phone="+2348060449322")
 >>> d.set_password("gentle")
+
+{"first_name": "Dennis", "last_name": "Chiedu", "email": "dennis@gmail.com", "phone": "+2348060449322"}
 >>> d._password
 '$2b$12$O5/akQt0HIJoF1ylyTAZou0H3b.THcGIsKdaHabIGljBfFnXaUbHG'
 >>> d.save()
@@ -73,5 +75,3 @@ False
 
 # command to start up our api
 AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev AGRO_API_HOST=0.0.0.0 AGRO_API_PORT=5000 python3 -m api.v1.app
-
-

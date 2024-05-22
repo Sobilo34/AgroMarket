@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Users """
+"""  API actions for Users """
 from models.user import User
 from models import storage
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger.utils import swag_from
+from flask import request
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
@@ -20,6 +21,34 @@ def get_users():
         list_users.append(user.to_dict())
     return jsonify(list_users)
 
+@app_views.route('/login', methods=['POST'], strict_slashes=False)
+@swag_from('documentation/user/login_user.yml', methods=['POST'])
+def login_user():
+    """
+    Logs in a user
+    """
+    if not request.get_json():
+        abort(400, description="Not a JSON")
+    if 'email' not in request.get_json() and 'phone' not in request.get_json():
+        abort(400, description="Missing email or phone")
+    if 'password' not in request.get_json():
+        abort(400, description="Missing password")
+        
+    data = request.get_json()
+    email = data.get('email')
+    phone = data.get('phone')
+    password = data.get('password')
+        
+    user = None
+    if email:
+        user = storage.find_user_by_email(email)
+    elif phone:
+        user = storage.find_user_by_email(phone)
+        
+    if not user or not user.check_password(password):
+        abort(401, description="Invalid email/phone or password")
+        
+    return make_response(jsonify(user.to_dict()), 200)
 
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get_user.yml', methods=['GET'])
@@ -62,11 +91,18 @@ def post_user():
 
     if 'email' not in request.get_json():
         abort(400, description="Missing email")
+    if 'first_name' not in request.get_json():
+        abort(400, description="Missing firstname")
+    if 'last_name' not in request.get_json():
+        abort(400, description="Missing firstname")
     if 'password' not in request.get_json():
         abort(400, description="Missing password")
+    if 'phone' not in request.get_json():
+        abort(400, description="Missing phone")
 
     data = request.get_json()
     instance = User(**data)
+    instance.set_password(data.get('password'))
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
 

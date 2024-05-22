@@ -2,3 +2,6 @@
 *__pyc*
 *.pyc
 *pyca*
+.env
+*.env
+*env

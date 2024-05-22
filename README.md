@@ -3,16 +3,6 @@ AgroMarket is a marketplace where farmers can sell their produce. This project w
 # AgroMarket
 AgroMarket is a marketplace where farmers can sell their produce. This project was developed by a team of three contributors.
 
-## Contributors
-- [Adigwe Dennis](https://github.com/talk2dennis)
-  <img src="https://github.com/talk2dennis.png" alt="Adigwe Dennis" height="50" width="50">
-
-- [Gideon Oba](https://github.com/Deyonoba)
-  <img src="https://github.com/Deyonoba.png" alt="Gideon Oba" height="50" width="50">
-
-- [Bilal Oyeleke](https://github.com/Sobilo34)
-  <img src="https://github.com/Sobilo34.png" alt="Bilal Oyeleke" height="50" width="50">
-
 
 ## Project Description
 AgroMarket is a web-based platform that connects farmers with potential buyers. It provides a convenient and efficient way for farmers to showcase and sell their produce directly to consumers. The platform also offers features such as product categorization, search functionality, and secure payment options to enhance the user experience.
@@ -137,6 +127,13 @@ We welcome contributions from the community to improve AgroMarket. To contribute
 3. Make your changes and commit them: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin feature/your-feature-name`
 5. Open a pull request
+
+## Contributors
+<img src="https://github.com/talk2dennis.png" alt="Adigwe Dennis" height="30" width="30" style="border-radius: 50%;">[Adigwe Dennis](https://github.com/talk2dennis)
+
+<img src="https://github.com/Deyonoba.png" alt="Gideon Oba" height="30" width="30" style="border-radius: 50%;"> [Gideon Oba](https://github.com/Deyonoba)
+
+<img src="https://github.com/Sobilo34.png" alt="Bilal Oyeleke" height="30" width="30" style="border-radius: 50%;"> [Bilal Oyeleke](https://github.com/Sobilo34)
 
 ## Contact
 For any inquiries, please contact the project contributors:

@@ -23,6 +23,7 @@ class User(BaseModel, Base):
         phone = Column(String(15), nullable=False)
         profile_pic = Column(Text, nullable=True)
         is_farmer = Column(Boolean, default=False)
+        is_admin = Column(Boolean, default=False)
         farm_name = Column(String(100), nullable=True)
         location = Column(String(100), nullable=True)
         category_id = Column(String(60), ForeignKey('categories.id'),
@@ -51,3 +52,19 @@ class User(BaseModel, Base):
         """ checkes the hashed password for authentication """
         return bcrypt.checkpw(password.encode('utf-8'),
                               self._password.encode('utf-8'))
+
+    def make_admin(self):
+        """Makes the user an admin"""
+        self.is_admin = True
+
+    def remove_admin(self):
+        """Removes admin privileges from the user"""
+        self.is_admin = False
+
+    def make_farmer(self):
+        """Makes the user a farmer"""
+        self.is_farmer = True
+
+    def remove_farmer(self):
+        """Removes farmer status from the user"""
+        self.is_farmer = False

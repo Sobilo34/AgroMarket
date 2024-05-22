@@ -86,6 +86,20 @@ class DBStorage:
                         return value
 
         return None
+    
+    def find_user_by_email(self, email):
+        """
+        Find user by email, or None if not found
+        """
+        if not email:
+            return None
+
+        all_users = self.all(User)
+        for user in all_users.values():
+            if (user.email == email):
+                return user
+
+        return None
 
     def count(self, cls=None):
         """

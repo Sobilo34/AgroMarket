@@ -18,6 +18,14 @@ user_category = Table(
                              extend_existing=True
 )
 
+# # Association table for Products and Categories
+# product_category = Table(
+#        'product_category', Base.metadata,
+#        Column('product_id', String(60), ForeignKey('products.id'), primary_key=True),
+#        Column('category_id', String(60), ForeignKey('categories.id'), primary_key=True),
+#        extend_existing=True
+# )
+
 
 class Category(BaseModel, Base):
     """Representation of Category Model """
@@ -27,6 +35,8 @@ class Category(BaseModel, Base):
     # Relationship to User model
     users = relationship('User', secondary=user_category,
                          back_populates='categories')
+#     products = relationship('Product', secondary=product_category,
+#     back_populates='categories')
 
     def __init__(self, *args, **kwargs):
         """initializes Category"""

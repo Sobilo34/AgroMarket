@@ -28,6 +28,7 @@ class User(BaseModel, Base):
         location = Column(String(100), nullable=True)
         category_id = Column(String(60), ForeignKey('categories.id'),
                              nullable=True)
+        products = relationship('Product', back_populates='user')
 
         # Relationship to Category model
         categories = relationship('Category', secondary=user_category,

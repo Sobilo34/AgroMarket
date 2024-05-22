@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Users """
+"""  API actions for Users """
 from models.user import User
 from models import storage
 from api.v1.views import app_views
@@ -62,6 +62,10 @@ def post_user():
 
     if 'email' not in request.get_json():
         abort(400, description="Missing email")
+    if 'first_name' not in request.get_json():
+        abort(400, description="Missing firstname")
+    if 'last_name' not in request.get_json():
+        abort(400, description="Missing firstname")
     if 'password' not in request.get_json():
         abort(400, description="Missing password")
 

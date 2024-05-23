@@ -8,6 +8,8 @@ import sqlalchemy
 from sqlalchemy import Column, String, Boolean, Text, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 from hashlib import md5
+from models.order import Order
+from models.product import Product
 from models.category import user_category, Category
 import bcrypt
 
@@ -29,6 +31,8 @@ class User(BaseModel, Base):
         category_id = Column(String(60), ForeignKey('categories.id'),
                              nullable=True)
         products = relationship('Product', back_populates='user')
+        orders = relationship('Order', back_populates='user')
+        reviews = relationship('Review', back_populates='user')
 
         # Relationship to Category model
         categories = relationship('Category', secondary=user_category,

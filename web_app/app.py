@@ -30,6 +30,12 @@ def sellers_dashboard():
 
     return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
 
+@app.route('/products', strict_slashes=False)
+def products_page():
+    """ the index page of prduct upload"""
+
+    return render_template('product.html', cache_id=str(uuid.uuid4()))
+
 
 if __name__ == "__main__":
     """ start app """

@@ -13,7 +13,7 @@ import os
 
 
 @app_views.route('/products', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/product/all_products.yml')
+@swag_from('documentation/products/all_products.yml')
 def get_products():
     """
     Retrieves the list of all products objects
@@ -25,7 +25,7 @@ def get_products():
     return jsonify(list_products)
 
 @app_views.route('/products/<product_id>', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/product/get_product.yml', methods=['GET'])
+@swag_from('documentation/products/get_product.yml', methods=['GET'])
 def get_product(product_id):
     """ Retrieves an product """
     product = storage.get(Product, product_id)
@@ -35,9 +35,9 @@ def get_product(product_id):
     return jsonify(product.to_dict())
 
 
-@app_views.route('/product/<product_id>', methods=['DELETE'],
+@app_views.route('/products/<product_id>', methods=['DELETE'],
                  strict_slashes=False)
-@swag_from('documentation/product/delete_product.yml', methods=['DELETE'])
+@swag_from('documentation/products/delete_product.yml', methods=['DELETE'])
 def delete_product(product_id):
     """
     Deletes a product Object
@@ -55,7 +55,7 @@ def delete_product(product_id):
 
 
 @app_views.route('/products', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/product/post_product.yml', methods=['POST'])
+@swag_from('documentation/products/post_product.yml', methods=['POST'])
 def post_product():
     """
     Creates a product
@@ -76,13 +76,13 @@ def post_product():
     return make_response(jsonify(instance.to_dict()), 201)
 
 
-@app_views.route('/product/<product_id>', methods=['PUT'], strict_slashes=False)
-@swag_from('documentation/product/put_product.yml', methods=['PUT'])
+@app_views.route('/products/<product_id>', methods=['PUT'], strict_slashes=False)
+@swag_from('documentation/products/put_product.yml', methods=['PUT'])
 def put_product(product_id):
     """
     Updates a product
     """
-    product = storage.get(product, product_id)
+    product = storage.get(Product, product_id)
 
     if not product:
         abort(404)
@@ -95,12 +95,12 @@ def put_product(product_id):
     data = request.get_json()
     for key, value in data.items():
         if key not in ignore:
-            setattr(Product, key, value)
+            setattr(product, key, value)
     storage.save()
     return make_response(jsonify(product.to_dict()), 200)
 
 @app_views.route('/products/<product_id>/images', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/product/images/get_images.yml', methods=['GET'])
+@swag_from('documentation/products/images/get_images.yml', methods=['GET'])
 def get_images(product_id):
     """ Retrieve images associated with a specific product. """
     product = storage.get(Product, product_id)
@@ -113,12 +113,13 @@ def get_images(product_id):
     return jsonify(list_images)
 
 @app_views.route('/products/<product_id>/images', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/product/image/post_image.yml', methods=['POST'])
+@swag_from('documentation/products/image/post_image.yml', methods=['POST'])
 def post_image(product_id):
     """
     Upload images for a specific product.
     """
-    UPLOAD_FOLDER = "/web_app/static/images/upload"
+    UPLOAD_FOLDER = "web_app/static/images/upload"
+
     product = storage.get(Product, product_id)
     if not product:
         abort(404)
@@ -136,10 +137,11 @@ def post_image(product_id):
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filepath = os.path.join(UPLOAD_FOLDER, filename)
+            print(filepath)
             file.save(filepath)
 
             # Create a new Image object
-            new_image = Image(url=filepath, product_id=product_id)
+            new_image = Image(url=filename, product_id=product_id)
             new_image.save()
             image_urls.append(filepath)
         else:

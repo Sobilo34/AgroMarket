@@ -75,3 +75,8 @@ False
 
 # command to start up our api
 AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_HOST=localhost AGRO_MYSQL_DB=agroMarket_dev_db AGRO_TYPE_STORAGE=db AGRO_ENV=dev AGRO_API_HOST=0.0.0.0 AGRO_API_PORT=5000 python3 -m api.v1.app
+
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Plantain", "description": "Fresh Plantain", "price": 5000, "quantity": 20}' http://192.168.0.3:5001/api/v1/products
+
+# to upload file
+curl -X POST -F "file=@plantain.jpg"

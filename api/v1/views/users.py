@@ -21,6 +21,7 @@ def get_users():
         list_users.append(user.to_dict())
     return jsonify(list_users)
 
+
 @app_views.route('/login', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/user/login_user.yml', methods=['POST'])
 def login_user():
@@ -33,22 +34,23 @@ def login_user():
         abort(400, description="Missing email or phone")
     if 'password' not in request.get_json():
         abort(400, description="Missing password")
-        
+
     data = request.get_json()
     email = data.get('email')
     phone = data.get('phone')
     password = data.get('password')
-        
+
     user = None
     if email:
         user = storage.find_user_by_email(email)
     elif phone:
         user = storage.find_user_by_email(phone)
-        
+
     if not user or not user.check_password(password):
         abort(401, description="Invalid email/phone or password")
-        
+
     return make_response(jsonify(user.to_dict()), 200)
+
 
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get_user.yml', methods=['GET'])

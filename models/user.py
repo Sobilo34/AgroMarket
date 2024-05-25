@@ -38,7 +38,6 @@ class User(BaseModel, Base):
         categories = relationship('Category', secondary=user_category,
                                   back_populates='users')
 
-
     def __init__(self, *args, **kwargs):
         """initializes user"""
         super().__init__(*args, **kwargs)

@@ -15,8 +15,7 @@ user_category = Table(
                              primary_key=True),
                       Column('category_id', String(60),
                              ForeignKey('categories.id'), primary_key=True),
-                             extend_existing=True
-)
+                      extend_existing=True)
 
 
 class Category(BaseModel, Base):
@@ -33,7 +32,12 @@ class Category(BaseModel, Base):
         """initializes Category"""
         super().__init__(*args, **kwargs)
 
-# Association table for many-to-many relationship between products and categories
+
+"""
+Association table for many-to-many relationship between products
+and categories """
 product_category = Table('product_category', Base.metadata,
-                         Column('product_id', String(60), ForeignKey('products.id')),
-                         Column('category_id', String(60), ForeignKey('categories.id')))
+                         Column('product_id', String(60),
+                                ForeignKey('products.id')),
+                         Column('category_id', String(60),
+                                ForeignKey('categories.id')))

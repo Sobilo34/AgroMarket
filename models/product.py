@@ -2,6 +2,7 @@ from sqlalchemy import Column, String, Text, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 
+
 class Product(BaseModel, Base):
     """Representation of a product data and methods """
     __tablename__ = 'products'
@@ -10,7 +11,8 @@ class Product(BaseModel, Base):
     price = Column(Integer, nullable=False)
     quantity = Column(Integer, default=0)
     location = Column(String(100), nullable=True)
-    category_id = Column(String(60), ForeignKey('categories.id'), nullable=True)
+    category_id = Column(String(60), ForeignKey('categories.id'),
+                         nullable=True)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
     user = relationship('User', back_populates='products')
     category = relationship('Category', back_populates='products')

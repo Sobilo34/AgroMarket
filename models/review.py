@@ -10,7 +10,7 @@ class Review(BaseModel, Base):
     order_id = Column(String(60), ForeignKey('orders.id'), nullable=False)
     rating = Column(Integer, nullable=False)
     comment = Column(Text, nullable=True)
-    
+
     user = relationship('User', back_populates='reviews')
     order = relationship('Order', back_populates='reviews')
 

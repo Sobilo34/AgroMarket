@@ -16,7 +16,7 @@ class Order(BaseModel, Base):
     product_id = Column(String(60), ForeignKey('products.id'), nullable=False)
     quantity = Column(Integer, nullable=False)
     total_price = Column(Integer, nullable=False)
-    
+    # relationships
     user = relationship('User', back_populates='orders')
     product = relationship('Product', back_populates='orders')
     delivery = relationship('Delivery', uselist=False, back_populates='order')

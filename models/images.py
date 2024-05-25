@@ -2,13 +2,13 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 
+
 class Image(BaseModel, Base):
     """Representation of an image data and methods"""
     __tablename__ = 'images'
     url = Column(String(256), nullable=False)
     product_id = Column(String(60), ForeignKey('products.id'), nullable=True)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
-    
     product = relationship('Product', back_populates='images')
     user = relationship('User', back_populates='images')
 

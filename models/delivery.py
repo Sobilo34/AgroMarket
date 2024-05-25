@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 from datetime import datetime
 
+
 class Delivery(BaseModel, Base):
     """Representation of a delivery data and methods"""
     __tablename__ = 'deliveries'
@@ -11,7 +12,7 @@ class Delivery(BaseModel, Base):
     delivery_date = Column(DateTime, nullable=True)
     delivered = Column(Boolean, default=False)
     address = Column(String(128), nullable=False)
-    
+
     user = relationship('User', back_populates='deliveries')
     order = relationship('Order', back_populates='delivery')
 

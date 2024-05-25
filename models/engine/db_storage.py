@@ -18,7 +18,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"User": User, "Category": Category, "Product": Product,
-           "Order": Order, "Delivery": Delivery, "Review": Review, "Image": Image}
+           "Order": Order, "Delivery": Delivery, "Review": Review,
+           "Image": Image}
 
 
 class DBStorage:
@@ -92,7 +93,7 @@ class DBStorage:
                         return value
 
         return None
-    
+
     def find_user_by_email(self, email):
         """
         Find user by email, or None if not found

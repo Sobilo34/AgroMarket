@@ -21,13 +21,14 @@ def close_db(error):
 def index():
     """ the index page of AgroMarket """
 
-    return render_template('index.html', cache_id = str(uuid.uuid4()))
+    return render_template('index.html', cache_id=str(uuid.uuid4()))
+
 
 @app.route('/dashboard', strict_slashes=False)
 def sellers_dashboard():
     """ the index page of the seller """
 
-    return render_template('seller_dashboard.html', cache_id = str(uuid.uuid4()))
+    return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
 
 
 if __name__ == "__main__":

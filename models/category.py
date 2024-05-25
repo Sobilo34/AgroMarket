@@ -27,6 +27,7 @@ class Category(BaseModel, Base):
     # Relationship to User model
     users = relationship('User', secondary=user_category,
                          back_populates='categories')
+    products = relationship('Product', back_populates='category')
 
     def __init__(self, *args, **kwargs):
         """initializes Category"""

@@ -11,13 +11,14 @@ from models.product import Product
 from models.order import Order
 from models.delivery import Delivery
 from models.review import Review
+from models.images import Image
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"User": User, "Category": Category, "Product": Product,
-           "Order": Order, "Delivery": Delivery, "Review": Review}
+           "Order": Order, "Delivery": Delivery, "Review": Review, "Image": Image}
 
 
 class DBStorage:

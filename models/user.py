@@ -28,15 +28,16 @@ class User(BaseModel, Base):
         is_admin = Column(Boolean, default=False)
         farm_name = Column(String(100), nullable=True)
         location = Column(String(100), nullable=True)
-        category_id = Column(String(60), ForeignKey('categories.id'),
-                             nullable=True)
         products = relationship('Product', back_populates='user')
         orders = relationship('Order', back_populates='user')
         reviews = relationship('Review', back_populates='user')
+        images = relationship('Image', back_populates='user')
+        deliveries = relationship('Delivery', back_populates='user')
 
         # Relationship to Category model
         categories = relationship('Category', secondary=user_category,
                                   back_populates='users')
+
 
     def __init__(self, *args, **kwargs):
         """initializes user"""

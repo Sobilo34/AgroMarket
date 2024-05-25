@@ -12,9 +12,9 @@ class Product(BaseModel, Base):
     location = Column(String(100), nullable=True)
     category_id = Column(String(60), ForeignKey('categories.id'), nullable=True)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=True)
-
-    categories = relationship('Category', secondary='product_category', back_populates='products')
     user = relationship('User', back_populates='products')
+    category = relationship('Category', back_populates='products')
+    images = relationship('Image', back_populates='product')
     orders = relationship('Order', back_populates='product')
 
     def __init__(self, *args, **kwargs):
@@ -40,3 +40,10 @@ class Product(BaseModel, Base):
     def set_user(self, user):
         """ sets the user of the product """
         self.user_id = user.id
+
+    def add_image(self, image):
+        """Adds an image to the product if under 5 images"""
+        if self.images.count() < 5:
+            self.images.append(image)
+        else:
+            raise Exception("Cannot add more than 5 images to a product")

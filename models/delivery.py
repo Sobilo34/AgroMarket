@@ -12,7 +12,7 @@ class Delivery(BaseModel, Base):
     delivered = Column(Boolean, default=False)
     address = Column(String(128), nullable=False)
     
-    user = relationship('User', back_populates='user')
+    user = relationship('User', back_populates='deliveries')
     order = relationship('Order', back_populates='delivery')
 
     def __init__(self, *args, **kwargs):

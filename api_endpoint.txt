@@ -1,0 +1,60 @@
+then our API endpoint
+
+User Endpoints
+POST /login
+GET /users: Retrieve a list of all users.
+POST /users: Create a new user.
+GET /users/{id}: Retrieve a specific user by ID.
+PUT /users/{id}: Update a specific user by ID.
+DELETE /users/{id}: Delete a specific user by ID.
+
+Product Endpoints
+GET /products: Retrieve a list of all products.
+POST /products: Create a new product.
+GET /products/{id}: Retrieve a specific product by ID.
+PUT /products/{id}: Update a specific product by ID.
+DELETE /products/{id}: Delete a specific product by ID.
+GET /products/{id}/images: Retrieve images associated with a specific product.
+POST /products/{id}/images: Upload images for a specific product.
+
+Category Endpoints
+GET /categories: Retrieve a list of all categories.
+POST /categories: Create a new category.
+GET /categories/{id}: Retrieve a specific category by ID.
+PUT /categories/{id}: Update a specific category by ID.
+DELETE /categories/{id}: Delete a specific category by ID.
+GET /categories/{id}/products: Retrieve products associated with a specific category.
+
+Order Endpoints
+GET /orders: Retrieve a list of all orders.
+POST /orders: Create a new order.
+GET /orders/{id}: Retrieve a specific order by ID.
+PUT /orders/{id}: Update a specific order by ID.
+DELETE /orders/{id}: Delete a specific order by ID.
+GET /orders/{id}/reviews: Retrieve reviews associated with a specific order.
+POST /orders/{id}/reviews: Create a review for a specific order.
+
+Delivery Endpoints
+GET /deliveries: Retrieve a list of all deliveries.
+POST /deliveries: Create a new delivery.
+GET /deliveries/{id}: Retrieve a specific delivery by ID.
+PUT /deliveries/{id}: Update a specific delivery by ID.
+DELETE /deliveries/{id}: Delete a specific delivery by ID.
+GET /orders/{order_id}/delivery: Retrieve the delivery associated with a specific order.
+POST /orders/{order_id}/delivery: Create a delivery for a specific order.
+
+Review Endpoints
+GET /reviews: Retrieve a list of all reviews.
+POST /reviews: Create a new review.
+GET /reviews/{id}: Retrieve a specific review by ID.
+PUT /reviews/{id}: Update a specific review by ID.
+DELETE /reviews/{id}: Delete a specific review by ID.
+
+Image Endpoints
+GET /images: Retrieve a list of all images.
+POST /images: Upload a new image.
+GET /images/{id}: Retrieve a specific image by ID.
+PUT /images/{id}: Update a specific image by ID.
+DELETE /images/{id}: Delete a specific image by ID.
+GET /users/{user_id}/images: Retrieve images associated with a specific user.
+POST /users/{user_id}/images: Upload images for a specific user.

@@ -23,10 +23,33 @@ def index():
 
     return render_template('index.html', cache_id=str(uuid.uuid4()))
 
+@app.route('/signup', strict_slashes=False)
+def signup_page():
+    """ the page for signing up"""
+
+    return render_template('signup.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/login', strict_slashes=False)
+def login_page():
+    """ the page for signing/logging in"""
+
+    return render_template('login.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/account_type', strict_slashes=False)
+def accout_type():
+    """ the page for account type selection"""
+
+    return render_template('account_type.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/status_type', strict_slashes=False)
+def status_type():
+    """ the page for status type selection"""
+
+    return render_template('status_type.html', cache_id=str(uuid.uuid4()))
 
 @app.route('/dashboard', strict_slashes=False)
 def sellers_dashboard():
-    """ the index page of the seller """
+    """ the page of the seller dashboard """
 
     return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
 

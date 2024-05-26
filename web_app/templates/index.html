@@ -27,17 +27,17 @@
 
 <div id="heda">
     <span id="lolo">
-        <a href="templates/bilal.html">Join Community</a>
-        <a href="templates/sign.html">Gain Customers</a>
-        <a href="templates/sign.html">Sell Product</a>
-        <a href="templates/sign.html">Buy Product</a>
+        <a href="{{ url_for('signup_page') }}">Create Account</a>
+        <a href="{{ url_for('login_page') }}">Gain Customers</a>
+        <a href="{{ url_for('login_page') }}">Sell Product</a>
+        <a href="{{ url_for('login_page') }}">Buy Product</a>
     </span>
 
     <span class="heda_links">
         <a href="{{ url_for('account_type') }}"><h4 id="crat">Create Account</h4></a>
         <br>
         <img src="{{ url_for('static', filename='images/MAC.png') }}" alt="my account" id="crat_img">
-        <a href="templates/signin.html"><h3 id="exat">My Account</h3></a>
+        <a href="{{ url_for('login_page') }}"><h3 id="exat">My Account</h3></a>
     </span>
 
     <div class="header_caption">

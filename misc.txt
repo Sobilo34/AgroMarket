@@ -29,7 +29,7 @@ AGRO_MYSQL_USER=agroMarket_dev AGRO_MYSQL_PWD=agroMarket_dev_secret AGRO_MYSQL_H
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from models import storage
 >>> from models.user import User
->>> data = {'first_name': 'Dennis', 'last_name': 'Chiedu', 'email': 'dennis@gmail.com', 'password': 'asdfehjkl;'}
+>>> data = {'first_name': 'Sobil', 'last_name': 'Leke', 'email': 'sobilleke@gmail', 'password': 'sobil;'}
 >>> dennis = User(**data)
 >>> dennis
 <models.user.User object at 0x7fc8439fc880>

@@ -1,5 +1,5 @@
 // JavaScript code for dynamically appending product information
-fetch('http://192.168.99.185:5001/api/v1/products')
+fetch('http://127.0.0.1:5001/api/v1/products/')
 .then(response => response.json())
 .then(data => {
     data.forEach(product => {

@@ -53,21 +53,25 @@
 
     <div class="product_container">
         <h2>My Products</h2>
+        <div class="upload_product">
+            <button type="button" class="upload">
+                <h1>&plus;<span> Upload Product </span></h1>
+            </button>
+        </div>
         <iframe src="{{ url_for('products_page') }}" frameborder="0"></iframe>
     </div>
 
     <div id="side_bar">
         <div class="side_bar_content">
             <input type="text" placeholder="            Search Catalogue.." class="search_bar">
-                <a href="#"><h4>Switch to Buyer</h4></a>
-                <a href="#"><h4>My Profile</h4></a>
-                <a href="#"><h4>Settings</h4></a>
-                <a href="#"><h4>Logout</h4></a>
+                <a href="#"><h4>Switch to Buyer</h4><img src="../static/images/trans_history.png" alt="switch_icon"></a>
+                <a href="#"><h4>My Profile</h4><img src="../static/images/trans_history.png" alt="switch_icon"></a>
+                <a href="#"><h4>Settings</h4><img src="../static/images/trans_history.png" alt="switch_icon"></a>
+                <a href="#"><h4>Logout</h4><img src="../static/images/trans_history.png" alt="switch_icon"></a>
         </div>
     </div>
 
     <footer>
-        <h2>Contact Us</h2>
         <div class="down_logo">
           <a href="adigwedennis@gmail.com"><img src="../static/images/email.png" alt="email_logo" class="_logo"></a>
           <a href="+2348104910518"><img src="../static/images/Phone.png" alt="phone_logo" class="_logo"></a>

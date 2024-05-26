@@ -25,9 +25,9 @@ def index():
 
 @app.route('/signup', strict_slashes=False)
 def signup_page():
-    """ the page for signing up"""
+    """ the page for signing/logging in"""
 
-    return render_template('signup.html', cache_id=str(uuid.uuid4()))
+    return render_template('login.html', cache_id=str(uuid.uuid4()))
 
 @app.route('/login', strict_slashes=False)
 def login_page():

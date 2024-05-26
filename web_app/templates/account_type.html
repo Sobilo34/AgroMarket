@@ -1,17 +1,19 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sign</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') }}?cache_id={{ cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') }}?cache_id={{ cache_id }}">
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+    </style>
 </head>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') + '?' + cache_id }}">
-<style>
-    body {
-        overflow-y: hidden;
-    }
-</style>
 <body>
     <img src="../static/images/farm 1.jpg" alt="" id="bag_img">
     <div class="cus_overlay"></div>

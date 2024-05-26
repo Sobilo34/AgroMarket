@@ -22,7 +22,7 @@
         <h2 id="log_in">Do you want to Create a Business or Personal Account?</h2>
 
         <div class="legalt">
-            <form method="get" action="../templates/login.html" style="column-count: 2;">
+            <form method="get" action="{{ url_for('signup_page') }}" style="column-count: 2;">
                 <input type="radio" name="account" value="Personal Account" class="pers_val" >
                 <h1 id="for" value="Personal Account" >Business Account</h1>
                 <input type="radio" name="account" value="Business Account" class="bus_val">

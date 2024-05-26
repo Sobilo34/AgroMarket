@@ -23,7 +23,7 @@
     <h2 id="log_in">Do you want to Sign in as a Buyer or Seller?</h2>
 
     <div class="legalt">
-        <form method="get" action="../templates/login.html" style="column-count: 2;">
+        <form method="get" action="{{ url_for('sellers_dashboard') }}" style="column-count: 2;">
             <input type="radio" name="account" value="Personal Account" class="pers_val" >
             <h1 id="for" value="Personal Account" >Buyer</h1>
             <input type="radio" name="account" value="Business Account" class="bus_val">

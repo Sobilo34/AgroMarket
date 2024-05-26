@@ -22,7 +22,7 @@ body {
         <h2 id="log_in">Sign in to your Account</h2>
        
         <div class="legalt">
-            <form method="get" action="../templates/seller_dashboard.html">
+            <form method="get" action="{{ url_for('status_type') }}">
                 <h3 class="option_caption">Username/Business name</h3>
                 <input type="text" name="username" class="option_con">
                 <h3 class="option_caption">Email/Phone Number</h3>

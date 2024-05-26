@@ -2,6 +2,7 @@ body {
 width: 100%;
 color: #F8FFED;
 overflow-x: hidden;
+margin-left: auto;
 }
 
 #top_logo {

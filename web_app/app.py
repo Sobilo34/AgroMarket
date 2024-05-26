@@ -36,7 +36,7 @@ def login_page():
     return render_template('login.html', cache_id=str(uuid.uuid4()))
 
 @app.route('/account_type', strict_slashes=False)
-def accout_type():
+def account_type():
     """ the page for account type selection"""
 
     return render_template('account_type.html', cache_id=str(uuid.uuid4()))

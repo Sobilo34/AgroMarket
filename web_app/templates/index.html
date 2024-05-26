@@ -4,13 +4,6 @@
     <title>AgroMarket: A Farmers Market</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') + '?' + cache_id }}">
-    <style>
-        /* .round-img {
-            border-radius: 50%;
-            height: 100px;
-            width: 100px;
-        } */
-    </style>
 </head>
 <body>
 
@@ -36,7 +29,7 @@
     <span class="heda_links">
         <a href="{{ url_for('account_type') }}"><h4 id="crat">Create Account</h4></a>
         <br>
-        <img src="{{ url_for('static', filename='images/MAC.png') }}" alt="my account" id="crat_img">
+        <img src="{{ url_for('static', filename='images/profile.png') }}" alt="my account" id="crat_img">
         <a href="{{ url_for('login_page') }}"><h3 id="exat">My Account</h3></a>
     </span>
 

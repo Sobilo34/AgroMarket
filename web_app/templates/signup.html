@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') + '?' + cache_id }}">
 <style>
-body {
+/* body {
     overflow-y: hidden;
-}
+} */
 
 .crt_but {
     position: relative;
@@ -37,16 +37,30 @@ body {
         <h2 id="log_in">Get started now!</h2>
 
         <div class="legalt">
-            <form method="get" action="{{ url_for('login_page) }}">
-                <h3 class="option_caption">Username/Business name</h3>
-                <input type="text" name="username" class="option_con">
-                <h3 class="option_caption">Email/Phone Number</h3>
-                <input type="email" name="email" class="option_con"> 
+            <form method="post" action="{{ url_for('signup_page') }}">
+                <h3 class="option_caption">First Name</h3>
+                <input type="text" name="first_name" class="option_con" required>
+                <h3 class="option_caption">Last Name</h3>
+                <input type="text" name="last_name" class="option_con" required>
+                <h3 class="option_caption">Email</h3>
+                <input type="email" name="email" class="option_con" required>
+                <h3 class="option_caption">Phone Number</h3>
+                <input type="text" name="phone" class="option_con" required> 
                 <h3 class="option_caption">Password</h3>
-                <input type="password" name="password" class="option_con"><br>  
+                <input type="password" name="password" class="option_con" required><br>  
                 <input type="submit" value="Create Account" class="crt_but">
-                <h4 style="margin-top: 50px; text-align: center; color: black;">Already have an Account? <a href="../templates/login.html"> Login</a></h4>
+                <h4 style="margin-top: 50px; text-align: center; color: black;">Already have an Account? <a href="{{ url_for('login_page') }}"> Login</a></h4>
             </form>
+            <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
         </div>
     </div>
 </body>

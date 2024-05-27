@@ -16,7 +16,7 @@ header #agroMarket_logo {
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    margin-left: 30%;
+    margin-left: 28%;
     margin-top: 20px;
 }
 
@@ -43,18 +43,18 @@ header #my_profile h5 {
 
 header h1 {
     margin-left: -50px;
-    margin-top: 80px;
+    margin-top: 100px;
     color: rgb(5, 5, 15);
 }
 
 #side_bar {
     position: relative;
-    top: -81px;
-    left: -45px;
+    top: 0px;
+    left: -65px;
     background-color:  rgb(5, 5, 15);
     border: 1px solid gray;
-    height: 1500px;
-    width: 330px;
+    height: 1600px;
+    width: 350px;
     border-radius: 50px;
 }
 
@@ -110,22 +110,24 @@ header h1 {
 .nav_bar {
     background-color: green;
     height: 80px;
-    width: 80.5%;
-    max-width: 100%;
-    display: inline-flex;
-    justify-content: space-around;
-    padding-left: 20px;
-    margin-left: 18.5%;
+    width: 101.5%;
+    justify-content: space-between;
+    margin-left: -1%;
     margin-top: auto;
+    text-align: right;
+    justify-content: flex-end;
 }
   
 .nav_bar a {
+    position: relative;
+    top: 40px;
     text-decoration: none;
     color: rgb(223, 233, 233);
     font-size: 20px;
-    margin-top: 45px;
+    margin-right: 2.5%;
+    margin-top: 30px;
     font-weight: 600;
-    float: bottom;
+    padding-left: 7.5%;
 }
 
 /* .nav_bar a:hover {
@@ -214,7 +216,7 @@ header h1 {
 
 .product_container iframe {
     margin-top: 10px;
-    height: 650;
+    height: 750;
     width: 100%;
 }
 .upload_product {
@@ -301,7 +303,7 @@ header h1 {
     top: 5%;
     width: 30%;
     height: 85%;
-    background: grey;
+    background: rgb(5, 5, 15);
     opacity: 0.8;
     color: white;
     padding: 20px;
@@ -362,7 +364,7 @@ header h1 {
     color: white;
 }
 
-footer {
+/* footer {
     position: relative;
     bottom: 0px;
     height: 70px;
@@ -382,4 +384,4 @@ footer {
   footer ._logo {
     height: 20px;
     width: 20px;
-  }
+  } */

@@ -101,6 +101,7 @@ def status_type():
 
     return render_template('status_type.html', cache_id=str(uuid.uuid4()))
 
+@login_required
 @app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
 def sellers_dashboard():
     """ the page of the seller dashboard """
@@ -118,6 +119,24 @@ def sellers_dashboard():
             flash('Upload failed, check the form', 'danger')
             return jsonify({"error": "Upload failed"}), 400
     return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/profile', strict_slashes=False)
+def profile():
+    """ the page for user profile"""
+
+    return render_template('profile.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/cart>', strict_slashes=False)
+def cart():
+    """ the page for product details"""
+
+    return render_template('cart.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/logout', strict_slashes=False)
+def logout():
+    """ the page for logging out"""
+    logout_user()
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,74 @@
+.navbar-brand img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+body div .header_caption {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #cd1515;
+    text-align: center;
+}
+
+.container div .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    align-items: center;
+    text-align: center;
+}
+
+/* for products style */
+
+
+.product-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid #d4af37; /* Gold border */
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-description {
+    padding: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
+
+.card-description h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.card-description p {
+    margin: 10px 0;
+    color: #f9f9f9; /* Slightly lighter white */
+}
+
+.card-description .price h3 {
+    margin: 10px 0;
+    color: #d4af37; /* Gold text */
+}
+
+.btn-primary {
+    background-color: #d4af37; /* Gold button */
+    border-color: #d4af37;
+}
+
+.btn-primary:hover {
+    background-color: #b8952e; /* Darker gold on hover */
+    border-color: #b8952e;
+}

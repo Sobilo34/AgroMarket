@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Text, Integer, ForeignKey
+from sqlalchemy import Column, String, Text, Integer, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 
@@ -10,6 +10,7 @@ class Product(BaseModel, Base):
     description = Column(Text, nullable=False)
     price = Column(Integer, nullable=False)
     quantity = Column(Integer, default=0)
+    date_of_harvest = Column(Date, nullable=True)
     location = Column(String(100), nullable=True)
     category_id = Column(String(60), ForeignKey('categories.id'),
                          nullable=True)
@@ -34,6 +35,10 @@ class Product(BaseModel, Base):
     def set_location(self, location):
         """ sets the location of the product """
         self.location = location
+
+    def set_harvest_date(self, date_of_harvest):
+        """Sets the day of harvest of product"""
+        self.date_of_harvest = date_of_harvest
 
     def set_category(self, category):
         """ sets the category of the product """

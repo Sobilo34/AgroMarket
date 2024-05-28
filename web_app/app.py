@@ -5,9 +5,12 @@ import json
 from models import storage
 from models.category import Category
 from models.user import User
+from models.product import Product
 from os import environ, getenv
-from flask import Flask, render_template, request, redirect, url_for, flash
+
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+
 import uuid
 
 
@@ -79,6 +82,13 @@ def login_page():
             return redirect(url_for('login_page', data=data))
     return render_template('login.html', cache_id=str(uuid.uuid4()))
 
+
+@app.route('/products', strict_slashes=False)
+def products_page():
+    """ the index page of product upload"""
+    return render_template('product.html', cache_id=str(uuid.uuid4()))
+
+
 @app.route('/account_type', strict_slashes=False)
 def account_type():
     """ the page for account type selection"""
@@ -91,17 +101,23 @@ def status_type():
 
     return render_template('status_type.html', cache_id=str(uuid.uuid4()))
 
-@app.route('/dashboard', strict_slashes=False)
+@app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
 def sellers_dashboard():
     """ the page of the seller dashboard """
-
+    if request.method == 'POST':
+        url = getenv('AGRO_API_URL') + '/sellers_dashboard'
+        data = request.form.to_dict()
+        data_json = json.dumps(data)
+        response = requests.post(url, data=data_json,
+                                headers={'Content-Type': 'application/json'})
+        if response.status_code == 200:
+            flash('Product uploaded Successfully', 'success')
+            new_product = response.json()
+            return jsonify(new_product)
+        else:
+            flash('Upload failed, check the form', 'danger')
+            return jsonify({"error": "Upload failed"}), 400
     return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
-
-@app.route('/products', strict_slashes=False)
-def products_page():
-    """ the index page of prduct upload"""
-
-    return render_template('product.html', cache_id=str(uuid.uuid4()))
 
 
 if __name__ == "__main__":

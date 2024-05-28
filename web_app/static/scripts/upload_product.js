@@ -40,3 +40,35 @@ async function submitProduct() {
         alert('An error occurred while uploading the product.');
     }
 }
+
+// JavaScript code for dynamically appending product information
+fetch('http://127.0.0.1:5001/api/v1/products')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const productContent = document.querySelector('.product_content');
+        data.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.classList.add('a_product');
+
+            const imageElement = document.createElement('div');
+            imageElement.innerHTML = `<img src="${product.image || '../static/images/farm 2.jpg'}" alt="product_img">`;
+            productElement.appendChild(imageElement);
+            
+
+            const headingElement = document.createElement('h5');
+            headingElement.innerHTML = `<span id="des_caption">${product.name}</span><br>
+                                        Description: ${product.description}<br>
+                                        Price: ${product.price}<br>
+                                        Quantity: ${product.quantity}<br>
+                                        Date of Harvest: ${product.date_of_harvest ? product.date_of_harvest : 'N/A'}`;
+            productElement.appendChild(headingElement);
+
+            productContent.appendChild(productElement);
+        });
+    })
+    .catch(error => console.error('Error fetching products:', error));

@@ -3,27 +3,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller_dashboard</title>
-    <link rel="stylesheet" href="../static/styles/seller_dashboard.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/seller_dashboard.css') + '?' + cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="{{ url_for('static', filename='scripts/upload_product.js') + '?' + cache_id }}"></script>
+
+    <style>
+    .header_caption {
+    position: relative;
+    right: 180px;
+    width: 200px;
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    }
+
+    .header_caption h1 {
+        font-size: 25px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-left: 100%;
+    }
+
+    .header_caption h5 {
+        margin-top: -20px;
+        font-size: 12px;
+        font-family: cursive;
+        margin-left: 100%;
+        width: 140px;
+    }
+
+    #lolo {
+        background-color: yellow;
+    }
+
+    #lolo a {
+        background-color: green;
+    }
+
+    </style>
 </head>
 <body>
-    <header>
-        <div id="my_profile">
-            <img src="../static/images/leke.jpg" alt="profile_image" id="profile_image">
+
+    <img src="{{ url_for('static', filename='images/Farmer hub logo.jpg') }}" alt="Our logo" id="top_logo">
+    <div id="heda">
+        <span id="lolo">
+            <a href="{{ url_for('signup_page') }}">Settings</a>
+            <a href="{{ url_for('login_page') }}">Adverts</a>
+            <a href="{{ url_for('login_page') }}">Messages</a>
+            <a href="{{ url_for('login_page') }}">Home</a>
+        </span>
+    
+        <div class="header_caption">
+            <h1>AgroMarket</h1><br>
+            <h5>Sell Now, Earn better</h5>
         </div>
-        <h1>Welcome Sobil</h1>
-        <img src="../static/images/Farmer hub logo.jpg" alt="AgroMarket_logo" id="agroMarket_logo">
-        <h3>AgroMarket</h3>
-    </header>
-    <div class="nav_bar">
-        <a href="../templates/seller_dashboard.html">Home</a>
-        <a href="#">Messages</a>
-        <a href="#">Adverts</a>
-        <a href="#">Transactions</a>
-        <a href="#">Settings</a>
     </div>
+    
     
     <div class="dashboard_container">
         <h2>My Dashboard</h2>
@@ -96,9 +132,9 @@
         <iframe src="{{ url_for('products_page') }}" frameborder="0" scrolling-bar="no"></iframe>
     </div>
 
-    <div id="side_bar">
-        <div class="side_bar_content">
-            <input type="text" placeholder="            Search Catalogue.." class="search_bar">
+    <div id="side_bar_">
+        <div class="side_bar_content_">
+            <input type="text" placeholder="            Search Catalogue.." class="search_bar_">
                 <a href="#"><h4>Switch to Buyer</h4><img src="../static/images/dropdown.png" alt="switch_icon"></a>
                 <a href="#"><h4>My Profile</h4><img src="../static/images/profile.png" alt="switch_icon"></a>
                 <a href="#"><h4>Settings</h4><img src="../static/images/settings.png" alt="switch_icon"></a>

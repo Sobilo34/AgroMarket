@@ -56,7 +56,7 @@ fetch('http://127.0.0.1:5001/api/v1/products')
             productElement.classList.add('a_product');
 
             const imageElement = document.createElement('div');
-            imageElement.innerHTML = `<img src="${product.image || '../static/images/farm 2.jpg'}" alt="product_img">`;
+            imageElement.innerHTML = `<img src="${product.image || '../static/images/farm 4.jpg'}" alt="product_img">`;
             productElement.appendChild(imageElement);
             
 

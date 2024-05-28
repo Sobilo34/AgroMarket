@@ -7,17 +7,30 @@ from models.category import Category
 from models.user import User
 from os import environ, getenv
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 import uuid
 
 
 app = Flask(__name__)
 app.secret_key = getenv('AGRO_FLASK_SECRET')
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
 
 @app.teardown_appcontext
 def close_db(error):
     """ Remove the current SQLAlchemy Session """
     storage.close()
+
+# Inject current_user into all templates
+@app.context_processor
+def inject_user():
+    return dict(current_user=current_user)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return storage.find_user_by_email(user_id)
 
 
 @app.route('/', strict_slashes=False)
@@ -36,6 +49,7 @@ def signup_page():
         response = requests.post(url, data=data_json,
                                  headers={'Content-Type': 'application/json'})
         if response.status_code == 201:
+            print('account created')
             flash('Account created successfully', 'success')
             return redirect(url_for('login_page'))
         else:
@@ -53,12 +67,16 @@ def login_page():
         response = requests.post(url, data=data_json,
                                  headers={'Content-Type': 'application/json'})
         if response.status_code == 200:
-            print('login successfully')
-            flash('Account created successfully', 'success')
-            return redirect(url_for('login_page'))
+            user_data = response.json()
+            user = User.from_dict(user_data)
+            login_user(user)
+            print(f'User is active: {current_user.is_active}')
+            print(f'user email: {current_user.email}')
+            flash('Login successfully', 'success')
+            return redirect(url_for('index'))
         else:
             flash('Account creation failed, check the form', 'danger')
-            return redirect(url_for('signup_page', data=data))
+            return redirect(url_for('login_page', data=data))
     return render_template('login.html', cache_id=str(uuid.uuid4()))
 
 @app.route('/account_type', strict_slashes=False)

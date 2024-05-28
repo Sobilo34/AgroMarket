@@ -7,6 +7,7 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, Boolean, Text, ForeignKey, Integer
 from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 from hashlib import md5
 from models.order import Order
 from models.product import Product
@@ -14,7 +15,7 @@ from models.category import user_category, Category
 import bcrypt
 
 
-class User(BaseModel, Base):
+class User(BaseModel, Base, UserMixin):
     """Representation of a user data """
     if models.storage_t == 'db':
         __tablename__ = 'users'
@@ -48,10 +49,24 @@ class User(BaseModel, Base):
             value = md5(value.encode()).hexdigest()
         super().__setattr__(name, value)
 
+    @staticmethod
+    def from_dict(data):
+        return User(
+            id=data['id'],
+            first_name=data['first_name'],
+            last_name=data['last_name'],
+            email=data['email'],
+            _password=data['_password']
+        )
+
     def set_password(self, password):
         """ hashes the user password using bycript """
         self._password = bcrypt.hashpw(password.encode('utf-8'),
                                        bcrypt.gensalt()).decode('utf-8')
+
+    def get_id(self):
+        """Return the email to satisfy Flask-Login's requirements."""
+        return self.email
 
     def check_password(self, password):
         """ checkes the hashed password for authentication """

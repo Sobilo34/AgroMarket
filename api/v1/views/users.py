@@ -49,7 +49,7 @@ def login_user():
     if not user or not user.check_password(password):
         abort(401, description="Invalid email/phone or password")
 
-    return make_response(jsonify(user.to_dict()), 200)
+    return make_response(user.to_dict(), 200)
 
 
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)

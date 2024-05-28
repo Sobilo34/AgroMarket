@@ -38,6 +38,15 @@
 
         <div class="legalt">
             <form method="post" action="{{ url_for('login_page') }}">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ option_con }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
                 <h3 class="option_caption">Email</h3>
                 <input type="email" name="email" class="option_con" required>
                 <h3 class="option_caption">Password</h3>
@@ -46,15 +55,7 @@
                 <h4 style="margin-top: 50px; text-align: center; color: black;">Don't have an Account? <a href="{{ url_for('signup_page') }}"> Create Account</a></h4>
             </form>
             <!-- Display Flash Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul>
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+    
         </div>
     </div>
 </body>

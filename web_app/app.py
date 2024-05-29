@@ -67,6 +67,7 @@ def signup_page():
 @app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login_page():
     """ the page for signing/logging in"""
+    user = {}
     if request.method == 'POST':
         url = getenv('AGRO_API_URL') + '/login'
         data = request.form.to_dict()
@@ -80,12 +81,12 @@ def login_page():
             login_user(user)
             print(f'User is active: {current_user.is_active}')
             print(f'user email: {current_user.email}')
-            flash('Login successfully', 'success')
+            flash('Login successfully', 'alert alert-success')
             return redirect(url_for('index'))
         else:
-            flash('Account creation failed, check the form', 'danger')
-            return redirect(url_for('login_page', data=data))
-    return render_template('login.html', cache_id=str(uuid.uuid4()))
+            flash('Please check you login credentials', 'lert alert-danger')
+            return redirect(url_for('login_page', data=user))
+    return render_template('login.html', cache_id=str(uuid.uuid4()), data=user)
 
 
 @app.route('/products', strict_slashes=False)
@@ -117,11 +118,11 @@ def sellers_dashboard():
         response = requests.post(url, data=data_json,
                                 headers={'Content-Type': 'application/json'})
         if response.status_code == 200:
-            flash('Product uploaded Successfully', 'success')
+            flash('Product uploaded Successfully', 'alert alert-success')
             new_product = response.json()
             return jsonify(new_product)
         else:
-            flash('Upload failed, check the form', 'danger')
+            flash('Upload failed, check the form', 'lert alert-danger')
             return jsonify({"error": "Upload failed"}), 400
     return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
 
@@ -141,6 +142,7 @@ def cart():
 def logout():
     """ the page for logging out"""
     logout_user()
+    flash('Logout successfully', 'success')
     return redirect(url_for('index'))
 
 

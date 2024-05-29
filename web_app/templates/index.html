@@ -4,6 +4,15 @@
 
 {% block content %}
 <div class="container" id="product_uploads">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}" role="alert">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
     <div class="row justify-content-center">
         {% for product in data %}
         <div class="col-md-4">

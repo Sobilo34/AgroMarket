@@ -48,6 +48,11 @@ body div .header_caption {
     margin-left: 12%;
 }
 
+.content {
+    position: relative;
+    top: -200px;
+}
+
 #product_uploads {
     margin-top: 50px;
 }

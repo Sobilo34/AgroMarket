@@ -44,44 +44,6 @@
     <p>Connecting farmers to buyers</p>
 </div>
 
-<div class="row upper_links">
-    <div class="col-sm-4 card">
-        <h2>Buyers</h2>
-        <p>Find the best farm produce from our sellers</p>
-        <p><a class="btn btn-primary" href="{{ url_for('cart') }}" role="button">Get Started &raquo;</a></p>
-    </div>
-    <div class="col-sm-4 card">
-        <h2>Sellers</h2>
-        <p>Get your farm produce to the right buyers</p>
-        <p><a class="btn btn-primary" href="{{ url_for('signup_page') }}" role="button">Get Started &raquo;</a></p>
-    </div>
-    <div class="col-sm-4 my-5 mx-5 card">
-        <h2>AgroMarket</h2>
-        <p>Learn more about AgroMarket</p>
-        <p><a class="btn btn-primary" href="#" role="button">Learn More &raquo;</a></p>
-    </div>
-</div>
 
-<h1 class="text-center" style="margin-top: -20px; font-weight: bold; color: #333;">Explore Now</h1>
-
-<div class="container" id="product_uploads">
-    <div class="row justify-content-center">
-        {% for product in data %}
-        <div class="col-md-4">
-            <div class="card product-card my-4 mx-auto">
-                <img src="../static/images/farm 4.jpg" alt="Product Image" class="card-image">
-                <div class="card-description">
-                    <h2>{{ product.name }}</h2>
-                    <p>{{ product.description }}</p>
-                    <div class="price">
-                        <h3>#{{ product.price }}</h3>
-                    </div>
-                    <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
 <!-- Your content goes here -->
 {% endblock %}

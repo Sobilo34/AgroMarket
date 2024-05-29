@@ -1,57 +1,52 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-</head>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') + '?' + cache_id }}">
-<style>
-/* body {
-    overflow-y: hidden;
-} */
+{% extends "base.html" %}
 
-.crt_but {
-    position: relative;
-    top: 30px;
-    left: 30%;
-    background-color: rgb(6, 22, 8);
-    border: 2px solid rgb(6, 22, 8);
-    border-radius: 5px;
-    height: 30px;
-    width: 200px;
-    font-size: larger;
-    font-family: fantasy;
-    color: wheat;
-}
+{% block title %}: Home{% endblock %}
 
-</style>
-<body>
-    <img src="../static/images/farm 1.jpg" alt="" id="bag_img">
-    <div class="cus_overlay"></div>
-    <h1 id="caption">AgroMarket</h1><br>
+{% block content %}
+<div class="slider">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+  
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../static/images/farm 1.jpg" alt="Los Angeles" style="width:100%; height: 300px;">
+        </div>
+  
+        <div class="item">
+          <img src="../static/images/farm 2.jpg" alt="Chicago" style="width:100%; height: 300px;">
+        </div>
+      
+        <div class="item">
+          <img src="../static/images/farm 3.jpg" alt="New york" style="width:100%; height: 300px;">
+        </div>
+      </div>
+  
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
 
-    <img src="../static/images/Farmer hub logo.jpg" alt="Our logo" id="heda_logo">
-    <div class="form_bag">
-        <h2 id="log_in">Get started now!</h2>
+<div class="jumbotron text-center overlay">
+    <h1>Welcome to AgroMarket</h1>
+    <p>Connecting farmers to buyers</p>
+</div>
 
-        <div class="legalt">
-            <form method="post" action="{{ url_for('signup_page') }}">
-                <h3 class="option_caption">First Name</h3>
-                <input type="text" name="first_name" class="option_con" required>
-                <h3 class="option_caption">Last Name</h3>
-                <input type="text" name="last_name" class="option_con" required>
-                <h3 class="option_caption">Email</h3>
-                <input type="email" name="email" class="option_con" required>
-                <h3 class="option_caption">Phone Number</h3>
-                <input type="text" name="phone" class="option_con" required> 
-                <h3 class="option_caption">Password</h3>
-                <input type="password" name="password" class="option_con" required><br>  
-                <input type="submit" value="Create Account" class="crt_but">
-                <h4 style="margin-top: 50px; text-align: center; color: black;">Already have an Account? <a href="{{ url_for('login_page') }}"> Login</a></h4>
-            </form>
-            <!-- Display Flash Messages -->
+<div class="container content">
+  <h2>Sign Up</h2>
+  <form class="form-horizontal" method="post" action="{{ url_for('signup_page') }}">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul>
@@ -61,7 +56,58 @@
             </ul>
         {% endif %}
     {% endwith %}
+    
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Firstname:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="text" placeholder="Your Firstname" name="first_name">
         </div>
     </div>
-</body>
-</html>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Lastname:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="lastname" placeholder="Your Lastname" name="last_name">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Phone Number:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="phone" placeholder="Enter email" name="phone">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+      </div>
+    </div>
+
+    <!-- <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Create Account</button>
+      </div>
+    </div>
+    <h4 style="margin-top: 50px; text-align: center; color: black;">Already have an Account? <a href="{{ url_for('login_page') }}"> Login</a></h4>
+  </form>
+</div>
+
+<!-- Your content goes here -->
+{% endblock %}

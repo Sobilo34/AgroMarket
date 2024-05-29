@@ -142,7 +142,7 @@ def cart():
 def logout():
     """ the page for logging out"""
     logout_user()
-    flash('Logout successfully', 'success')
+    flash('Logout successfully', 'alert alert-success')
     return redirect(url_for('index'))
 
 

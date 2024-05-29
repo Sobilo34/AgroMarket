@@ -111,6 +111,7 @@ def status_type():
 @app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
 def sellers_dashboard():
     """ the page of the seller dashboard """
+    user = storage.find_user_by_email(current_user.email)
     if request.method == 'POST':
         url = getenv('AGRO_API_URL') + '/sellers_dashboard'
         data = request.form.to_dict()
@@ -124,7 +125,8 @@ def sellers_dashboard():
         else:
             flash('Upload failed, check the form', 'lert alert-danger')
             return jsonify({"error": "Upload failed"}), 400
-    return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
+    return render_template('seller_dashboard.html',
+                           cache_id=str(uuid.uuid4()), data=user.products)
 
 @app.route('/profile', strict_slashes=False)
 def profile():

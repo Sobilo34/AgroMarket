@@ -118,3 +118,57 @@ footer {
     justify-content: center;
     text-align: center;
 }
+
+
+/* style for dashboard */
+body {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.dashboard_container {
+    background-color: #ffffff; /* White background for card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product_container {
+    background-color: #ffffff; /* White background for card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product_card {
+    background-color: #ffffff; /* White background for card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-description {
+    padding: 15px;
+    text-align: center;
+}
+
+.price h4 {
+    color: #d4af37; /* Gold text */
+}
+
+.btn-primary {
+    background-color: #4CAF50; /* Green button */
+    border-color: #4CAF50;
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Darker green on hover */
+    border-color: #45a049;
+}

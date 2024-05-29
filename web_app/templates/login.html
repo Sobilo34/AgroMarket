@@ -1,44 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}: Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>Welcome to AgroMarket</h1>
+    <p>Connecting farmers to buyers</p>
+</div>
+
+<div class="container">
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') + '?' + cache_id }}">
-<style>
-/* body {
-    overflow-y: hidden;
-} */
-
-.crt_but {
-    position: relative;
-    top: 30px;
-    left: 30%;
-    background-color: rgb(6, 22, 8);
-    border: 2px solid rgb(6, 22, 8);
-    border-radius: 5px;
-    height: 30px;
-    width: 200px;
-    font-size: larger;
-    font-family: fantasy;
-    color: wheat;
-}
-
-</style>
 <body>
-    <img src="../static/images/farm 1.jpg" alt="" id="bag_img">
-    <div class="cus_overlay"></div>
-    <h1 id="caption">AgroMarket</h1><br>
 
-    <img src="../static/images/Farmer hub logo.jpg" alt="Our logo" id="heda_logo">
-    <div class="form_bag">
-        <h2 id="log_in">Get started now!</h2>
-
-        <div class="legalt">
-            <form method="post" action="{{ url_for('login_page') }}">
-                {% with messages = get_flashed_messages(with_categories=true) %}
+<div class="container">
+  <h2>Log in</h2>
+  <form class="form-horizontal" method="post" action="{{ url_for('login_page') }}">
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul>
                 {% for category, message in messages %}
@@ -47,16 +33,37 @@
             </ul>
         {% endif %}
     {% endwith %}
-                <h3 class="option_caption">Email</h3>
-                <input type="email" name="email" class="option_con" required>
-                <h3 class="option_caption">Password</h3>
-                <input type="password" name="password" class="option_con" required><br>  
-                <input type="submit" value="Login" class="crt_but">
-                <h4 style="margin-top: 50px; text-align: center; color: black;">Don't have an Account? <a href="{{ url_for('signup_page') }}"> Create Account</a></h4>
-            </form>
-            <!-- Display Flash Messages -->
-    
-        </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
     </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+    <h4 style="margin-top: 50px; text-align: center; color: black;">Don't have an Account? <a href="{{ url_for('signup_page') }}"> Create Account</a></h4>
+  </form>
+</div>
+
 </body>
 </html>
+
+</div>
+<!-- Your content goes here -->
+{% endblock %}

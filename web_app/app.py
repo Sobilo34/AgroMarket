@@ -39,8 +39,12 @@ def load_user(user_id):
 @app.route('/', strict_slashes=False)
 def index():
     """ the index page of AgroMarket """
-
-    return render_template('index.html', cache_id=str(uuid.uuid4()))
+    url = getenv('AGRO_API_URL') + '/products'
+    data = {}
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+    return render_template('index.html', data=data, cache_id=str(uuid.uuid4()))
 
 @app.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
 def signup_page():
@@ -69,6 +73,7 @@ def login_page():
         data_json = json.dumps(data)
         response = requests.post(url, data=data_json,
                                  headers={'Content-Type': 'application/json'})
+        # print(f'Status code: {response.status_code}')
         if response.status_code == 200:
             user_data = response.json()
             user = User.from_dict(user_data)
@@ -143,4 +148,4 @@ if __name__ == "__main__":
     """ start app """
     port = getenv('AGRO_API_PORT')
     host = getenv('AGRO_API_HOST')
-    app.run(host, port)
+    app.run(host, port=5000)

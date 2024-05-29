@@ -48,13 +48,15 @@ body div .header_caption {
     margin-left: 12%;
 }
 
-.content {
+
+
+.content, #product_uploads {
     position: relative;
-    top: -200px;
+    top: -310px;
 }
 
-#product_uploads {
-    margin-top: 50px;
+div .container #product_uploads {
+    margin-top: 0;
 }
 
 .product-card {

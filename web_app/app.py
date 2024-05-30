@@ -44,6 +44,7 @@ def index():
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
+        print(data)
     return render_template('index.html', data=data, cache_id=str(uuid.uuid4()))
 
 @app.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
@@ -101,9 +102,14 @@ def profile():
            methods=['GET', 'POST'])
 def products_page():
     """ the index page of product upload"""
+    user = storage.find_user_by_email(current_user.email)
     if request.method == 'POST':
+        if len(request.files.getlist('file')) > 5:
+            flash('You can only upload 5 images', 'alert alert-danger')
+            return redirect(url_for('products_page'))
         url = getenv('AGRO_API_URL') + '/products'
         data = request.form.to_dict()
+        data['user_id'] = user.id
         
         data_json = json.dumps(data)
         response = requests.post(url, data=data_json,

@@ -144,7 +144,6 @@ def post_image(product_id):
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filepath = os.path.join(UPLOAD_FOLDER, filename)
-            print(filepath)
             file.save(filepath)
 
             # Create a new Image object
@@ -153,7 +152,10 @@ def post_image(product_id):
             image_urls.append(filepath)
         else:
             abort(404, description="Invalid file type")
-    setattr(product, "cover_img", image_urls[0])
+    if image_urls:
+        product.cover_img = image_urls[-1].split('/')[-1]
+        storage.save()
+        print(f"Product cover_img updated to: {product.cover_img}")
     return jsonify(image_urls), 201
 
 

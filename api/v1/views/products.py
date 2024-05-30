@@ -131,7 +131,7 @@ def post_image(product_id):
     if not product:
         abort(404)
     if 'file' not in request.files:
-        abort(400, description="Not a FILE")
+        abort(401, description="Not a FILE")
 
     files = request.files.getlist('file')
     if not files:
@@ -140,20 +140,21 @@ def post_image(product_id):
     image_urls = []
     for file in files:
         if file.filename == '':
-            abort(400, description="No selected file")
+            abort(404, description="No selected file")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filepath = os.path.join(UPLOAD_FOLDER, filename)
             print(filepath)
             file.save(filepath)
+            print(f'saved successfully: {filename}')
 
             # Create a new Image object
             new_image = Image(url=filename, product_id=product_id)
             new_image.save()
             image_urls.append(filepath)
         else:
-            abort(400, description="Invalid file type")
-
+            abort(404, description="Invalid file type")
+    print(f'image urls: {image_urls}')
     return jsonify(image_urls), 201
 
 

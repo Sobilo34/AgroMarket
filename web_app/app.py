@@ -88,12 +88,48 @@ def login_page():
             return redirect(url_for('login_page', data=user))
     return render_template('login.html', cache_id=str(uuid.uuid4()), data=user)
 
+@login_required
+@app.route('/profile', strict_slashes=False)
+def profile():
+    """ the page for user profile"""
+    user = storage.find_user_by_email(current_user.email)
 
-@app.route('/products', strict_slashes=False)
+    return render_template('profile.html',
+                           cache_id=str(uuid.uuid4()), data=user)
+
+@app.route('/products', strict_slashes=False,
+           methods=['GET', 'POST'])
 def products_page():
     """ the index page of product upload"""
-    return render_template('product.html', cache_id=str(uuid.uuid4()))
+    if request.method == 'POST':
+        url = getenv('AGRO_API_URL') + '/products'
+        data = request.form.to_dict()
+        
+        data_json = json.dumps(data)
+        response = requests.post(url, data=data_json,
+                                 headers={'Content-Type': 'application/json'})
+        if response.status_code == 201:
+            new_product = response.json()
+            url = getenv('AGRO_API_URL') + f'/products/{new_product["id"]}/images'
+            files = [('file', (file.filename, file.read())) for file in
+                     request.files.getlist('file')]
+            response = requests.post(url, files=files)
+            if response.status_code == 201:
+                flash('Product uploaded Successfully', 'alert alert-success')
+                return redirect(url_for('products_page'))
+        else:
+            flash('Upload failed', 'alert alert-danger')
+            return redirect(url_for('products_page'))
+    return render_template('product_upload.html', cache_id=str(uuid.uuid4()))
 
+@login_required
+@app.route('/review', strict_slashes=False,
+           methods=['GET', 'POST'])
+def review_page():
+    """ Returns the review of the user"""
+    user = storage.find_user_by_email(current_user.email)
+    reviews = user.reviews
+    return render_template('review.html', data=reviews, cache_id=str(uuid.uuid4()))
 
 @app.route('/account_type', strict_slashes=False)
 def account_type():
@@ -128,11 +164,6 @@ def sellers_dashboard():
     return render_template('seller_dashboard.html',
                            cache_id=str(uuid.uuid4()), data=user.products)
 
-@app.route('/profile', strict_slashes=False)
-def profile():
-    """ the page for user profile"""
-
-    return render_template('profile.html', cache_id=str(uuid.uuid4()))
 
 @app.route('/cart>', strict_slashes=False)
 def cart():

@@ -152,4 +152,4 @@ if __name__ == "__main__":
     """ start app """
     port = getenv('AGRO_API_PORT')
     host = getenv('AGRO_API_HOST')
-    app.run(host, port=5000)
+    app.run(host, port=5000, debug=True)

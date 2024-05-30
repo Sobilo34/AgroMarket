@@ -3,14 +3,14 @@
 {% block title %}: Home{% endblock %}
 
 {% block content %}
-<div class="container content">
+<div class="container content mt-5">
   <div class="row">
     <!-- Dashboard Sidebar -->
-    <div class="col-md-4">
-      <div class="dashboard_container card p-3 mb-4">
+    <div class="col-md-4 mb-4">
+      <div class="card p-3 mb-4 shadow-sm">
         <h2>My Dashboard</h2>
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action">My Profile</a>
+          <a href="{{ url_for('profile') }}" class="list-group-item list-group-item-action">My Profile</a>
           <a href="#" class="list-group-item list-group-item-action">My Products</a>
           <a href="#" class="list-group-item list-group-item-action">My Orders</a>
           <a href="#" class="list-group-item list-group-item-action">My Wallet</a>
@@ -19,32 +19,58 @@
       </div>
     </div>
 
-    <!-- Products Section -->
+    <!-- Dashboard Cards Section -->
     <div class="col-md-8">
-      <div class="product_container card p-3 mb-4">
-        <h2>My Products</h2>
-        <div class="row">
-          <!-- Product Card -->
-          <div class="col-md-4">
-            <div class="card product-card my-4 mx-auto">
-              <img src="../static/images/farm 4.jpg" alt="Product Image" class="card-image img-fluid">
-              <div class="card-description p-3">
-                <h3 class="card-title">Product Name</h3>
-                <p class="card-text">Product Description</p>
-                <div class="price">
-                  <h4>#Product Price</h4>
-                </div>
-                <a href="#" class="btn btn-primary btn-block">Edit Product</a>
-                <a href="#" class="btn btn-danger btn-block">Delete Product</a>
-              </div>
+      <div class="row">
+        <!-- Upload Product Card -->
+        <div class="col-md-6 mb-4 border shadow-s">
+          <a href="{{url_for('products_page')}}" class="card text-center text-decoration-none text-dark h-100 mb-4">
+            <div class="card-body">
+              <i class="fas fa-upload fa-3x mb-3"></i>
+              <h5 class="card-title">Upload Product</h5>
+              <p class="card-text">Add new products to your store.</p>
             </div>
-          </div>
-          <!-- Add more product cards as needed -->
+          </a>
+        </div>
+
+        <!-- Orders Card -->
+        <div class="col-md-6 mb-4 border shadow-s p-3 mb-4">
+          <a href="#" class="card text-center text-decoration-none text-dark h-100 m">
+            <div class="card-body">
+              <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+              <h5 class="card-title">Orders</h5>
+              <p class="card-text">View and manage your orders.</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Reviews Card -->
+        <div class="col-md-6 mb-4 border shadow-s p-3 mb-4">
+          <a href="#" class="card text-center text-decoration-none text-dark h-100  ">
+            <div class="card-body">
+              <i class="fas fa-star fa-3x mb-3"></i>
+              <h5 class="card-title">Reviews</h5>
+              <p class="card-text">Check your product reviews.</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Delivery Card -->
+        <div class="col-md-6 mb-4 border shadow-s p-3 mb-4">
+          <a href="#" class="card text-center text-decoration-none text-dark h-100 ">
+            <div class="card-body">
+              <i class="fas fa-truck fa-3x mb-3"></i>
+              <h5 class="card-title">Delivery</h5>
+              <p class="card-text">Manage your delivery options.</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Include FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="{{ url_for('static', filename='scripts/upload_product.js') + '?' + cache_id }}"></script>
 {% endblock %}

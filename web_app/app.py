@@ -98,6 +98,16 @@ def profile():
     return render_template('profile.html',
                            cache_id=str(uuid.uuid4()), data=user)
 
+@login_required
+@app.route('/product_index', strict_slashes=False)
+def product_index():
+    """ the page for product details"""
+    user = storage.find_user_by_email(current_user.email)
+    products = [product for product in user.products]
+
+    return render_template('product_index.html', cache_id=str(uuid.uuid4()),
+                           data=products)
+
 @app.route('/products', strict_slashes=False,
            methods=['GET', 'POST'])
 def products_page():
@@ -124,7 +134,7 @@ def products_page():
                 flash('Product uploaded Successfully', 'alert alert-success')
                 return redirect(url_for('products_page'))
         else:
-            flash('Upload failed', 'alert alert-danger')
+            flash('Product Upload failed', 'alert alert-danger')
             return redirect(url_for('products_page'))
     return render_template('product_upload.html', cache_id=str(uuid.uuid4()))
 

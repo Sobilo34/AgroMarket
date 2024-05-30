@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}: Home{% endblock %}
+
+{% block content %}
+<div class="container content">
+  <p>Product Listing</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <!-- from the products update the table -->
+  {% for product in data %}
+    <tbody>
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+<script src="{{ url_for('static', filename='scripts/upload_product.js') + '?' + cache_id }}"></script>
+{% endblock %}
+

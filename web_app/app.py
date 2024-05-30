@@ -39,8 +39,12 @@ def load_user(user_id):
 @app.route('/', strict_slashes=False)
 def index():
     """ the index page of AgroMarket """
-
-    return render_template('index.html', cache_id=str(uuid.uuid4()))
+    url = getenv('AGRO_API_URL') + '/products'
+    data = {}
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+    return render_template('index.html', data=data, cache_id=str(uuid.uuid4()))
 
 @app.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
 def signup_page():
@@ -63,24 +67,26 @@ def signup_page():
 @app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login_page():
     """ the page for signing/logging in"""
+    user = {}
     if request.method == 'POST':
         url = getenv('AGRO_API_URL') + '/login'
         data = request.form.to_dict()
         data_json = json.dumps(data)
         response = requests.post(url, data=data_json,
                                  headers={'Content-Type': 'application/json'})
+        # print(f'Status code: {response.status_code}')
         if response.status_code == 200:
             user_data = response.json()
             user = User.from_dict(user_data)
             login_user(user)
             print(f'User is active: {current_user.is_active}')
             print(f'user email: {current_user.email}')
-            flash('Login successfully', 'success')
+            flash('Login successfully', 'alert alert-success')
             return redirect(url_for('index'))
         else:
-            flash('Account creation failed, check the form', 'danger')
-            return redirect(url_for('login_page', data=data))
-    return render_template('login.html', cache_id=str(uuid.uuid4()))
+            flash('Please check you login credentials', 'lert alert-danger')
+            return redirect(url_for('login_page', data=user))
+    return render_template('login.html', cache_id=str(uuid.uuid4()), data=user)
 
 
 @app.route('/products', strict_slashes=False)
@@ -101,9 +107,11 @@ def status_type():
 
     return render_template('status_type.html', cache_id=str(uuid.uuid4()))
 
+@login_required
 @app.route('/dashboard', methods=['GET', 'POST'], strict_slashes=False)
 def sellers_dashboard():
     """ the page of the seller dashboard """
+    user = storage.find_user_by_email(current_user.email)
     if request.method == 'POST':
         url = getenv('AGRO_API_URL') + '/sellers_dashboard'
         data = request.form.to_dict()
@@ -111,17 +119,37 @@ def sellers_dashboard():
         response = requests.post(url, data=data_json,
                                 headers={'Content-Type': 'application/json'})
         if response.status_code == 200:
-            flash('Product uploaded Successfully', 'success')
+            flash('Product uploaded Successfully', 'alert alert-success')
             new_product = response.json()
             return jsonify(new_product)
         else:
-            flash('Upload failed, check the form', 'danger')
+            flash('Upload failed, check the form', 'lert alert-danger')
             return jsonify({"error": "Upload failed"}), 400
-    return render_template('seller_dashboard.html', cache_id=str(uuid.uuid4()))
+    return render_template('seller_dashboard.html',
+                           cache_id=str(uuid.uuid4()), data=user.products)
+
+@app.route('/profile', strict_slashes=False)
+def profile():
+    """ the page for user profile"""
+
+    return render_template('profile.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/cart>', strict_slashes=False)
+def cart():
+    """ the page for product details"""
+
+    return render_template('cart.html', cache_id=str(uuid.uuid4()))
+
+@app.route('/logout', strict_slashes=False)
+def logout():
+    """ the page for logging out"""
+    logout_user()
+    flash('Logout successfully', 'alert alert-success')
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":
     """ start app """
     port = getenv('AGRO_API_PORT')
     host = getenv('AGRO_API_HOST')
-    app.run(host, port)
+    app.run(host, port=5000, debug=True)

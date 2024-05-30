@@ -1,154 +1,76 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seller_dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/seller_dashboard.css') + '?' + cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
+{% extends "base.html" %}
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/upload_product.js') + '?' + cache_id }}"></script>
+{% block title %}: Home{% endblock %}
 
-    <style>
-    .header_caption {
-    position: relative;
-    right: 180px;
-    width: 200px;
-    margin-top: 20px;
-    color: white;
-    text-align: center;
-    }
-
-    .header_caption h1 {
-        font-size: 25px;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        margin-left: 100%;
-    }
-
-    .header_caption h5 {
-        margin-top: -20px;
-        font-size: 12px;
-        font-family: cursive;
-        margin-left: 100%;
-        width: 140px;
-    }
-
-    #lolo {
-        background-color: yellow;
-    }
-
-    #lolo a {
-        background-color: green;
-    }
-
-    </style>
-</head>
-<body>
-
-    <img src="{{ url_for('static', filename='images/Farmer hub logo.jpg') }}" alt="Our logo" id="top_logo">
-    <div id="heda">
-        <span id="lolo">
-            <a href="{{ url_for('signup_page') }}">Settings</a>
-            <a href="{{ url_for('login_page') }}">Adverts</a>
-            <a href="{{ url_for('login_page') }}">Messages</a>
-            <a href="{{ url_for('login_page') }}">Home</a>
-        </span>
-    
-        <div class="header_caption">
-            <h1>AgroMarket</h1><br>
-            <h5>Sell Now, Earn better</h5>
-        </div>
-    </div>
-    
-    
-    <div class="dashboard_container">
+{% block content %}
+<div class="container content mt-5">
+  <div class="row">
+    <!-- Dashboard Sidebar -->
+    <div class="col-md-4 mb-4">
+      <div class="card p-3 mb-4 shadow-sm">
         <h2>My Dashboard</h2>
-        <div class="dasb_content">
-            <div class="dasb_status">
-                <img src="../static/images/Acct_bal.webp" alt="acct_balance">
-                <h4>Account Balance</h4>
-                <button type="button">*****</button>
-            </div>
-
-            <div class="dasb_status">
-                <img src="../static/images/trans_history.png" alt="acct_balance">
-                <h4>Transaction History</h4>
-                <button type="button">*****</button>
-            </div>
-
-            <div class="dasb_status">
-                <img src="../static/images/goods_available.png" alt="acct_balance">
-                <h4>Available Products</h4>
-                <button type="button">*****</button>
-            </div>
-
-            <div class="dasb_status">
-                <img src="../static/images/customers.png" alt="acct_balance">
-                <h4>Total Customers</h4>
-                <button type="button">*****</button>
-            </div>
+        <div class="list-group">
+          <a href="{{ url_for('profile') }}" class="list-group-item list-group-item-action">My Profile</a>
+          <a href="#" class="list-group-item list-group-item-action">My Products</a>
+          <a href="#" class="list-group-item list-group-item-action">My Orders</a>
+          <a href="#" class="list-group-item list-group-item-action">My Wallet</a>
+          <a href="#" class="list-group-item list-group-item-action">My Settings</a>
         </div>
+      </div>
     </div>
 
-    <div class="product_container">
-        <h2>My Products</h2>
-        <div class="upload_product">
-            <button type="button" class="upload" onclick="showUploadForm()">
-                <h1>&plus;<span> Upload Product </span></h1>
-            </button>
-        </div>
-
-        <div id="uploadFormContainer" class="overlay">
-            <div class="form-container">
-                <button type="button" class="close-button" onclick="hideUploadForm()">&times;</button>
-                <h1>Add a new Product</h1>
-                <form id="uploadForm">
-                    <label for="productName"><h4>Product Name:</h4></label>
-                    <input type="text" class="the_input" id="productName" name="productName" required>
-        
-                    <label for="productDescription"><h4>Product Description:</h4></label>
-                    <textarea id="productDescription" class="the_input" name="productDescription" required></textarea>
-        
-                    <label for="productPrice"><h4>Product Price:</h4></label>
-                    <input type="number" class="the_input" id="productPrice" name="productPrice" required>
-        
-                    <label for="productQuantity"><h4>Product Quantity:</h4></label>
-                    <input type="number" class="the_input" id="productQuantity" name="productQuantity" required>
-        
-                    <label for="harvestDate"><h4>Harvest Date:</h4></label>
-                    <input type="date" class="the_input" id="harvestDate" name="harvestDate"><br>
-        
-                    <label for="productImage"><h4>Add Image/Video:</h4></label>
-                    <input type="file" class="the_input" id="productImage" name="productImage" accept="image/*"><br>
-        
-                    <button type="button" id="submit_butn" onclick="submitProduct()"><h4>Submit</h4></button>
-                    <button type="button" id="cancel_butn" onclick="hideUploadForm()"><h4>Cancel</h4></button>
-                </form>
+    <!-- Dashboard Cards Section -->
+    <div class="col-md-8">
+      <div class="row">
+        <!-- Upload Product Card -->
+        <div class="col-md-6 mb-4 border shadow-s">
+          <a href="{{url_for('products_page')}}" class="card text-center text-decoration-none text-dark h-100 mb-4">
+            <div class="card-body">
+              <i class="fas fa-upload fa-3x mb-3"></i>
+              <h5 class="card-title">Upload Product</h5>
+              <p class="card-text">Add new products to your store.</p>
             </div>
+          </a>
         </div>
-        
 
+        <!-- Orders Card -->
+        <div class="col-md-6 mb-4 border shadow-s p-3 mb-4">
+          <a href="#" class="card text-center text-decoration-none text-dark h-100 m">
+            <div class="card-body">
+              <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+              <h5 class="card-title">Orders</h5>
+              <p class="card-text">View and manage your orders.</p>
+            </div>
+          </a>
+        </div>
 
-        <iframe src="{{ url_for('products_page') }}" frameborder="0" scrolling-bar="no"></iframe>
+        <!-- Reviews Card -->
+        <div class="col-md-6 mb-4 border shadow-s p-3 mb-4">
+          <a href="#" class="card text-center text-decoration-none text-dark h-100  ">
+            <div class="card-body">
+              <i class="fas fa-star fa-3x mb-3"></i>
+              <h5 class="card-title">Reviews</h5>
+              <p class="card-text">Check your product reviews.</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Delivery Card -->
+        <div class="col-md-6 mb-4 border shadow-s p-3 mb-4">
+          <a href="#" class="card text-center text-decoration-none text-dark h-100 ">
+            <div class="card-body">
+              <i class="fas fa-truck fa-3x mb-3"></i>
+              <h5 class="card-title">Delivery</h5>
+              <p class="card-text">Manage your delivery options.</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div id="side_bar_">
-        <div class="side_bar_content_">
-            <input type="text" placeholder="            Search Catalogue.." class="search_bar_">
-                <a href="#"><h4>Switch to Buyer</h4><img src="../static/images/dropdown.png" alt="switch_icon"></a>
-                <a href="#"><h4>My Profile</h4><img src="../static/images/profile.png" alt="switch_icon"></a>
-                <a href="#"><h4>Settings</h4><img src="../static/images/settings.png" alt="switch_icon"></a>
-                <a href="#"><h4>Logout</h4><img src="../static/images/logout.png" alt="switch_icon"></a>
-        </div>
-    </div>
-
-    <!-- <footer>
-        <div class="down_logo">
-          <a href="adigwedennis@gmail.com"><img src="../static/images/email.png" alt="email_logo" class="_logo"></a>
-          <a href="+2348104910518"><img src="../static/images/Phone.png" alt="phone_logo" class="_logo"></a>
-          <a href="+2349134422033"><img src="../static/images/whatsapp.png" alt="whatsapp_logo" class="_logo"></a>
-          <a href="#"><img src="../static/images/X.png" alt="x_logo" class="_logo"></a>
-          <a href="https://github.com/Sobilo34/AgroMarket"><img src="../static/images/github.png" alt="github_logo" class="_logo"></a>
-        </div>
-    </footer> -->
-</html>
+<!-- Include FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="{{ url_for('static', filename='scripts/upload_product.js') + '?' + cache_id }}"></script>
+{% endblock %}

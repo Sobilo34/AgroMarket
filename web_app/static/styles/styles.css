@@ -1,0 +1,174 @@
+/* body {
+    overflow-x: hidden;
+} */
+
+.navbar-brand img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+body div .header_caption {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #cd1515;
+    text-align: center;
+}
+
+.container div .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    align-items: center;
+    text-align: center;
+}
+
+/* for products style */
+
+.slide {
+    margin-top: -20px;
+}
+
+.overlay {
+    position: relative;
+    top: -300px;
+    height: 300px;
+    background-color: black;
+    color: white;
+    opacity: 0.7;
+}
+
+.carousel-control {
+    z-index: 2;
+}
+
+
+.upper_links {
+    position: relative;
+    top: -200px;
+    margin-left: 12%;
+}
+
+
+
+.content, #product_uploads {
+    position: relative;
+    top: -310px;
+}
+
+div .container #product_uploads {
+    margin-top: 0;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid #d4af37; /* Gold border */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 70%;
+}
+
+.card-description {
+    padding: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
+
+.card-description h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.card-description p {
+    margin: 10px 0;
+    color: #f9f9f9; /* Slightly lighter white */
+}
+
+.card-description .price h3 {
+    margin: 10px 0;
+    color: #d4af37; /* Gold text */
+}
+
+.btn-primary {
+    background-color: #d4af37; /* Gold button */
+    border-color: #d4af37;
+}
+
+.btn-primary:hover {
+    background-color: #b8952e; /* Darker gold on hover */
+    border-color: #b8952e;
+}
+
+footer {
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* style for dashboard */
+body {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.dashboard_container {
+    background-color: #ffffff; /* White background for card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product_container {
+    background-color: #ffffff; /* White background for card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product_card {
+    background-color: #ffffff; /* White background for card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-description {
+    padding: 15px;
+    text-align: center;
+}
+
+.price h4 {
+    color: #d4af37; /* Gold text */
+}
+
+.btn-primary {
+    background-color: #4CAF50; /* Green button */
+    border-color: #4CAF50;
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Darker green on hover */
+    border-color: #45a049;
+}

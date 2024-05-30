@@ -10,7 +10,7 @@ class Product(BaseModel, Base):
     description = Column(Text, nullable=False)
     price = Column(Integer, nullable=False)
     quantity = Column(Integer, default=0)
-    # date_of_harvest = Column(Date, nullable=True)
+    cover_img = Column(String(100), default='agromarket.jpg')
     location = Column(String(100), nullable=True)
     category_id = Column(String(60), ForeignKey('categories.id'),
                          nullable=True)

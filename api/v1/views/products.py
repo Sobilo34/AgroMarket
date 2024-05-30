@@ -146,7 +146,6 @@ def post_image(product_id):
             filepath = os.path.join(UPLOAD_FOLDER, filename)
             print(filepath)
             file.save(filepath)
-            print(f'saved successfully: {filename}')
 
             # Create a new Image object
             new_image = Image(url=filename, product_id=product_id)
@@ -154,7 +153,7 @@ def post_image(product_id):
             image_urls.append(filepath)
         else:
             abort(404, description="Invalid file type")
-    print(f'image urls: {image_urls}')
+    setattr(product, "cover_img", image_urls[0])
     return jsonify(image_urls), 201
 
 

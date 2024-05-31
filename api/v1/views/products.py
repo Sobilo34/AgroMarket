@@ -153,6 +153,7 @@ def post_image(product_id):
         else:
             abort(404, description="Invalid file type")
     if image_urls:
+        print(image_urls[0])
         product.cover_img = image_urls[0].split('/')[-1]
         storage.save()
     return jsonify(image_urls), 201

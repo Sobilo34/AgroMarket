@@ -172,3 +172,18 @@ body {
     background-color: #45a049; /* Darker green on hover */
     border-color: #45a049;
 }
+
+.btn {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    border: none !important;
+}
+.dropdown-menu {
+    min-width: 100px !important;
+}
+
+.dropdown-item {
+    padding: 0px 5px !important;
+    font-size: 12px !important;
+}

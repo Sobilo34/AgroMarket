@@ -266,6 +266,8 @@ def cart(product_id):
         product = storage.get(Product, product_id)
         if not product:
             abort(404, description='Product not found')
+    if request.method == 'POST':
+        pass
     return render_template('cart.html', cache_id=str(uuid.uuid4()),
                            product=product)
 

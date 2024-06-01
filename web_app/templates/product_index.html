@@ -31,9 +31,9 @@
 
             <ul class="dropdown-menu dropdown-menu-dark bg-dark">
               <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" method="GET">Show</a></li>
-              <li><a class="dropdown-item" href="#">Edit</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" id="multiCollapseExample1">Edit</a></li>
               <li><hr class="dropdown-divider border-top border-secondary"></li>
-              <li><a class="dropdown-item text-danger" href="#" style="color: red;">Remove</a></li>
+              <li><a class="dropdown-item text-danger" href="{{ url_for('product_page', product_id=product['id']) }}" style="color: red;">Remove</a></li>
           </ul>
           
         </div>

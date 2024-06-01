@@ -11,7 +11,7 @@
             <div class="col-lg-4">
               <div class="card mb-4">
                 <div class="card-body text-center">
-                  <img src="../static/images/leke.jpg" alt="avatar"
+                  <img src="../static/images/upload/profile/{{ user.profile_pic }}" alt="{{user.first_name}}"
                     class="rounded-circle img-fluid" style="width: 150px; border-radius: 50%;">
                   <h5 class="my-3">Bilal Oyeleke</h5>
                   <p class="text-muted mb-1">Cash crops Farmer</p>
@@ -32,20 +32,20 @@
                       <i class="fas fa-globe fa-lg text-warning"></i>
                       <p class="mb-0">Contact Outlets</p>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                       <i class="fab fa-github fa-lg text-body"></i>
                       <img src="../static/images/github.png" alt="contact_image" style="height: 30px; width: 30px;">
                       <p class="mb-0">Github</p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    </li> -->
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                       <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
                       <img src="../static/images/X.png" alt="contact_image" style="height: 30px; width: 30px;">
                       <p class="mb-0">X (Twitter)</p>
-                    </li>
+                    </li> -->
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                       <i class="fab fa-phone fa-lg" style="color: #ac2bac;"></i>
                       <img src="../static/images/Phone.png" alt="contact_image" style="height: 30px; width: 30px;">
-                      <p class="mb-0">Phone</p>
+                      <p class="mb-0">{{ user.phone }}</p>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                       <i class="fab fa-whatsapp-f fa-lg" style="color: #3b5998;"></i>
@@ -65,7 +65,7 @@
                       <p class="mb-0">Full Name</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">Bilal Oyeleke</p>
+                      <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
                     </div>
                   </div>
                   <hr>
@@ -74,7 +74,7 @@
                       <p class="mb-0">Email</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">example@example.com</p>
+                      <p class="text-muted mb-0">{{ user.email }}</p>
                     </div>
                   </div>
                   <hr>
@@ -83,7 +83,7 @@
                       <p class="mb-0">Mobile Number</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">+2349134422033</p>
+                      <p class="text-muted mb-0">+{{ user.phone }}</p>
                     </div>
                   </div>
                   <hr>
@@ -92,7 +92,7 @@
                       <p class="mb-0">Address</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">Bay Area, Costain, Lagos</p>
+                      <p class="text-muted mb-0">{{ user.location }}</p>
                     </div>
                   </div>
                 </div>

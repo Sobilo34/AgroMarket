@@ -125,7 +125,7 @@ def post_image(product_id):
     """
     Upload images for a specific product.
     """
-    UPLOAD_FOLDER = "web_app/static/images/upload"
+    UPLOAD_FOLDER = "web_app/static/images/upload/product"
 
     product = storage.get(Product, product_id)
     if not product:

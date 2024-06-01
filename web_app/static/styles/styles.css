@@ -172,3 +172,14 @@ body {
     background-color: #45a049; /* Darker green on hover */
     border-color: #45a049;
 }
+
+
+a {
+    color: #428BCA;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #2A6496;
+    text-decoration: underline;
+}

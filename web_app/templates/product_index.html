@@ -21,7 +21,15 @@
         <td>{{ product.name }}</td>
         <td>{{ product.quantity }}</td>
         <td>{{ product.price }}</td>
-        <td></td>
+        <td><div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Detail</a></li>
+            <li><a href="#">Update</a></li>
+            <li class="danger"><a href="#">Delete</a></li>
+          </ul>
+        </div></td>
       </tr>
     </tbody>
     {% endfor %}

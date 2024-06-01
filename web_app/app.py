@@ -8,7 +8,7 @@ from models.user import User
 from models.product import Product
 from os import environ, getenv
 
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, session, url_for, flash, jsonify
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 import uuid
@@ -48,22 +48,49 @@ def index():
     return render_template('index.html', data=data, cache_id=str(uuid.uuid4()))
 
 @app.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/signup', methods=['GET', 'POST'])
 def signup_page():
-    """ the page for creating a user account """
+    """ The page for creating a user account """
     if request.method == 'POST':
-        url = getenv('AGRO_API_URL') + '/users'
+        user_url = getenv('AGRO_API_URL') + '/users'
+        image_url_template = getenv('AGRO_API_URL') + '/users/{}/image'
+
         data = request.form.to_dict()
-        data_json = json.dumps(data)
-        response = requests.post(url, data=data_json,
-                                 headers={'Content-Type': 'application/json'})
-        if response.status_code == 201:
-            print('account created')
-            flash('Account created successfully', 'success')
-            return redirect(url_for('login_page'))
+        json_data = json.dumps(data)
+
+        # Send POST request to create user
+        user_response = requests.post(user_url, data=json_data, headers={'Content-Type': 'application/json'})
+
+        if user_response.status_code == 201:
+            user = user_response.json()
+            user_id = user.get('id')
+
+            # Retrieve the image
+            file = request.files['file']
+            files = {
+                'file': (file.filename, file.read(), file.content_type)
+            }
+
+            # Send POST request to upload image
+            image_url = image_url_template.format(user_id)
+            image_response = requests.post(image_url, files=files)
+
+            if image_response.status_code == 200:
+                flash('Account created successfully', 'alert alert-success')
+                return redirect(url_for('login_page'))
+            else:
+                flash('Image upload failed', 'alert alert-danger')
+                # session['form_data'] = data  # Store form data in session
+                return redirect(url_for('signup_page'))
         else:
-            flash('Account creation failed, check the form', 'danger')
-            return redirect(url_for('signup_page', data=data))
-    return render_template('signup.html', cache_id=str(uuid.uuid4()))
+            flash('Account creation failed, check the form', 'alert alert-danger')
+            # session['form_data'] = data  # Store form data in session
+            return redirect(url_for('signup_page'))
+    else:
+        # # Retrieve form data from session if available
+        # form_data = session.pop('form_data', {})
+        return render_template('signup.html', cache_id=str(uuid.uuid4()))
+
 
 @app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login_page():
@@ -96,7 +123,7 @@ def profile():
     user = storage.find_user_by_email(current_user.email)
 
     return render_template('profile.html',
-                           cache_id=str(uuid.uuid4()), data=user)
+                           cache_id=str(uuid.uuid4()), user=user)
 
 @login_required
 @app.route('/product_index', strict_slashes=False)

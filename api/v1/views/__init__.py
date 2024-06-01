@@ -8,3 +8,4 @@ from api.v1.views.index import *
 from api.v1.views.users import *
 from api.v1.views.products import *
 # from api.v1.views.delivery import *
+from api.v1.views.order import *

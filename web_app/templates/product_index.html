@@ -21,23 +21,16 @@
         <td>{{ product.name }}</td>
         <td>{{ product.quantity }}</td>
         <td>{{ product.price }}</td>
-        <td>
-          <div class="dropdown">
-            <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                </svg>
-            </button>
-
-            <ul class="dropdown-menu dropdown-menu-dark bg-dark">
-              <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" method="GET">Show</a></li>
-              <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" id="multiCollapseExample1">Edit</a></li>
-              <li><hr class="dropdown-divider border-top border-secondary"></li>
-              <li><a class="dropdown-item text-danger" href="{{ url_for('product_page', product_id=product['id']) }}" style="color: red;">Remove</a></li>
+        <td><div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" method="GET">Detail</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" id="multiCollapseExample1">Edit</a></li>
+            <li><a class="dropdown-item text-danger" href="{{ url_for('product_page', product_id=product['id']) }}" style="color: red;">Remove</a></li>
           </ul>
-          
         </div>
-        </td>
+      </td>
       </tr>
     </tbody>
     {% endfor %}

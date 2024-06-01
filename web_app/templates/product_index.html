@@ -25,11 +25,12 @@
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li><a href="product/{{ product.id}}">Detail</a></li>
-            <li><a href="#">Update</a></li>
-            <li class="danger"><a href="#">Delete</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" method="GET">Detail</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('product_page', product_id=product['id']) }}" id="multiCollapseExample1">Edit</a></li>
+            <li><a class="dropdown-item text-danger" href="{{ url_for('product_page', product_id=product['id']) }}" style="color: red;">Remove</a></li>
           </ul>
-        </div></td>
+        </div>
+      </td>
       </tr>
     </tbody>
     {% endfor %}

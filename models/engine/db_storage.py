@@ -107,6 +107,20 @@ class DBStorage:
                 return user
 
         return None
+    
+    def find_product_by_id(self, product_id):
+        """
+        Find product by id, or None if not found
+        """
+        if not product_id:
+            return None
+
+        all_products = self.all(Product)
+        for product in all_products.values():
+            if (product.id == product_id):
+                return product
+
+        return None
 
     def count(self, cls=None):
         """

@@ -121,9 +121,6 @@ footer {
 
 
 /* style for dashboard */
-body {
-    background-color: #f8f9fa; /* Light background */
-}
 
 .dashboard_container {
     background-color: #ffffff; /* White background for card */
@@ -173,13 +170,24 @@ body {
     border-color: #45a049;
 }
 
-
-a {
-    color: #428BCA;
-    text-decoration: none;
+.btn-secondary {
+    background-color: #45a049;
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+    width: 200px !important;
+    height: 40px !important;
 }
 
-a:hover, a:focus {
-    color: #2A6496;
-    text-decoration: underline;
+.btn {
+    width: 100px;
+    height: 30px;
+
+}
+.dropdown-menu {
+    min-width: 100px !important;
+}
+
+.dropdown-item {
+    padding: 0px 5px !important;
+    font-size: 12px !important;
 }

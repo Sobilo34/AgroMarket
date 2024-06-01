@@ -15,14 +15,14 @@
         {% for product in data %}
         <div class="col-md-4">
             <div class="card product-card my-4 mx-auto">
-                <img src="../static/images/upload/{{ product['cover_img'] }}" alt="Product Image" class="card-image">
+                <img src="{{ url_for('static', filename='images/upload/' + product['cover_img']) }}" alt="Product Image" class="card-image">
                 <div class="card-description">
                     <h2>{{ product.name }}</h2>
                     <p>{{ product.description }}</p>
                     <div class="price">
                         <h3>#{{ product.price }}</h3>
                     </div>
-                    <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
+                    <!-- <a href="{{ url_for('product_page', product_id=product['id']) }}" class="btn btn-primary btn-block">View Product</a> -->
                 </div>
             </div>
         </div>

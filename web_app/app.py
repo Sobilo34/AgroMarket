@@ -166,6 +166,44 @@ def products_page():
     return render_template('product_upload.html', cache_id=str(uuid.uuid4()))
 
 @login_required
+@app.route('/product/<product_id>', strict_slashes=False, methods=['GET', 'POST', 'DELETE'])
+def product_page(product_id):
+    """ the page for product details of a particular product"""
+    user = storage.find_user_by_email(current_user.email)
+    url = getenv('AGRO_API_URL') + f'/products/{product_id}'
+
+    if request.method == 'GET':
+        response = requests.get(url)
+        if response.status_code == 200:
+            product = response.json()
+            return render_template('product.html', cache_id=str(uuid.uuid4()), product=product, user=user)
+        else:
+            flash('Product not found', 'alert alert-danger')
+            return redirect(url_for('product_index'))
+
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        data['user_id'] = user.id
+        data_json = json.dumps(data)
+        response = requests.put(url, data=data_json, headers={'Content-Type': 'application/json'})
+        if response.status_code == 200:
+            flash('Product updated Successfully', 'alert alert-success')
+        else:
+            flash('Product update failed', 'alert alert-danger')
+        return redirect(url_for('product_page', product_id=product_id))
+
+    if request.method == 'DELETE':
+        response = requests.delete(url)
+        if response.status_code == 200:
+            flash('Product deleted Successfully', 'alert alert-success')
+            return redirect(url_for('product_index'))
+        else:
+            flash('Product deletion failed', 'alert alert-danger')
+        return redirect(url_for('product_page', product_id=product_id))
+
+    return render_template('product.html', cache_id=str(uuid.uuid4()), product=product, user=user)
+
+@login_required
 @app.route('/review', strict_slashes=False,
            methods=['GET', 'POST'])
 def review_page():

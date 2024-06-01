@@ -121,9 +121,6 @@ footer {
 
 
 /* style for dashboard */
-body {
-    background-color: #f8f9fa; /* Light background */
-}
 
 .dashboard_container {
     background-color: #ffffff; /* White background for card */
@@ -173,11 +170,18 @@ body {
     border-color: #45a049;
 }
 
+.btn-secondary {
+    background-color: #45a049;
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+    width: 200px !important;
+    height: 40px !important;
+}
+
 .btn {
-    width: 30px !important;
-    height: 30px !important;
-    padding: 0 !important;
-    border: none !important;
+    width: 100px;
+    height: 30px;
+
 }
 .dropdown-menu {
     min-width: 100px !important;

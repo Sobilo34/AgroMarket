@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}: product.name{% endblock %}
+
+{% block content %}
+
+
+<div class="container content">
+  <h2 class='text-center'>{{ product.name }}</h2>
+  <br />
+    <div class="row">
+        <!-- product image -->
+        <div class="col-md-6">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+          
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="../static/images/upload/rice.jpg" alt="Los Angeles" style="width:100%;">
+                </div>
+          
+                <div class="item">
+                  <img src="../static/images/upload/rice2.jpg" alt="Chicago" style="width:100%;">
+                </div>
+              
+                <div class="item">
+                  <img src="../static/images/upload/rice3.jpg" alt="New york" style="width:100%;">
+                </div>
+              </div>
+          
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+        </div>
+
+        <!-- product details -->
+        <div class="col-md-6">
+        <p><strong>Product Name:</strong> {{ product.name }}</p>
+        <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+        <p><strong>Price:</strong> {{ product.price }}</p>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Category:</strong> {{ product.category }}</p>
+        <p><strong>Created At:</strong> {{ product.created_at }}</p>
+        <p><strong>Updated At:</strong> {{ product.updated_at }}</p>
+        <p><strong>Image:</strong> {{ product.image }}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ url_for('index') }}" class="btn btn-success">Back</a>
+            </div>
+            <div class="col-md-6">
+                <!-- Add to Cart Button -->
+                <a href="{{ url_for('cart', product_id=product.id) }}" class="btn btn-success btn-lg">Place Order</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

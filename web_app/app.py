@@ -8,7 +8,7 @@ from models.user import User
 from models.product import Product
 from os import environ, getenv
 
-from flask import Flask, render_template, request, redirect, session, url_for, flash, jsonify
+from flask import Flask, abort, render_template, request, redirect, session, url_for, flash, jsonify
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 import uuid
@@ -44,7 +44,6 @@ def index():
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        print(data)
     return render_template('index.html', data=data, cache_id=str(uuid.uuid4()))
 
 @app.route('/signup', methods=['GET', 'POST'], strict_slashes=False)
@@ -107,8 +106,6 @@ def login_page():
             user_data = response.json()
             user = User.from_dict(user_data)
             login_user(user)
-            print(f'User is active: {current_user.is_active}')
-            print(f'user email: {current_user.email}')
             flash('Login successfully', 'alert alert-success')
             return redirect(url_for('index'))
         else:
@@ -204,6 +201,20 @@ def product_page(product_id):
     return render_template('product.html', cache_id=str(uuid.uuid4()), product=product, user=user)
 
 @login_required
+@app.route('/products/<product_id>', strict_slashes=False)
+def product_detail(product_id):
+    """ the page for product details of a particular product"""
+    user = storage.find_user_by_email(current_user.email)
+    url = getenv('AGRO_API_URL') + f'/products/{product_id}'
+    response = requests.get(url)
+    if response.status_code == 200:
+        product = response.json()
+        return render_template('product_detail.html', cache_id=str(uuid.uuid4()), product=product, user=user)
+    else:
+        flash('Product not found', 'alert alert-danger')
+        return redirect(url_for('index'))
+
+@login_required
 @app.route('/review', strict_slashes=False,
            methods=['GET', 'POST'])
 def review_page():
@@ -245,12 +256,18 @@ def sellers_dashboard():
     return render_template('seller_dashboard.html',
                            cache_id=str(uuid.uuid4()), data=user.products)
 
-
-@app.route('/cart>', strict_slashes=False)
-def cart():
-    """ the page for product details"""
-
-    return render_template('cart.html', cache_id=str(uuid.uuid4()))
+@login_required
+@app.route('/cart/<product_id>', strict_slashes=False,
+           methods=['GET', 'POST'])
+def cart(product_id):
+    """ retrieves the product and redirect to the cart route"""
+    cart = {}
+    if request.method == 'GET':
+        product = storage.get(Product, product_id)
+        if not product:
+            abort(404, description='Product not found')
+    return render_template('cart.html', cache_id=str(uuid.uuid4()),
+                           product=product)
 
 @app.route('/logout', strict_slashes=False)
 def logout():

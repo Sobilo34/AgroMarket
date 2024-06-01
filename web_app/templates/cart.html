@@ -29,7 +29,7 @@
   </table>
   <div id="checkout-form" class="mt-4" style="display:none;">
     <h4>Enter your address</h4>
-    <form method="post" action="{{ url_for('checkout', product_id=product.id) }}">
+    <form method="post" action="{{ url_for('cart', product_id=product.id) }}">
       <div class="form-group">
         <label for="address">Address:</label>
         <input type="text" class="form-control" id="address" name="address" required>

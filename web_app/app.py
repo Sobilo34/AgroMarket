@@ -114,10 +114,22 @@ def login_page():
     return render_template('login.html', cache_id=str(uuid.uuid4()), data=user)
 
 @login_required
-@app.route('/profile', strict_slashes=False)
+@app.route('/profile', strict_slashes=False,
+           methods=['GET', 'POST', 'DELETE', 'PUT'])
 def profile():
     """ the page for user profile"""
     user = storage.find_user_by_email(current_user.email)
+    if request.method == 'POST':
+        url = getenv('AGRO_API_URL') + f'/users/{user.id}'
+        data = request.form.to_dict()
+        data_json = json.dumps(data)
+        response = requests.put(url, data=data_json,
+                                headers={'Content-Type': 'application/json'})
+        if response.status_code == 201:
+            flash('Profile updated Successfully', 'alert alert-success')
+        else:
+            flash('Profile update failed', 'alert alert-danger')
+        return redirect(url_for('profile'))
 
     return render_template('profile.html',
                            cache_id=str(uuid.uuid4()), user=user)

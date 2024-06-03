@@ -131,6 +131,44 @@ def put_user(user_id):
     return make_response(jsonify(user.to_dict()), 200)
 
 
+@app_views.route('/users/<user_id>/orders', methods=['GET'])
+@swag_from('documentation/user/orders.yml', methods=['GET'])
+def get_user_orders(user_id):
+    """ retrieves all orders of a user """
+    user = storage.get(User, user_id)
+    if not user:
+        abort(404)
+    orders = user.orders
+    list_orders = []
+
+    for order in orders:
+        obj = order.to_dict()
+
+        # Add user information to the order dictionary
+        user = {
+            'id': order.user.id,
+            'email': order.user.email,
+            'phone': order.user.phone,
+            'first_name': order.user.first_name,
+            'last_name': order.user.last_name,
+            'address': order.user.location
+        }
+        obj['user'] = user
+
+        # Add product information to the order dictionary
+        product = {
+            'id': order.product.id,
+            'name': order.product.name,
+            'description': order.product.description,
+            'price': order.product.price,
+            'image': order.product.cover_img
+        }
+        obj['product'] = product
+
+        list_orders.append(obj)
+
+    return jsonify(list_orders)
+
 @app_views.route('/users/<user_id>/image', methods=['POST'])
 @swag_from('documentation/user/upload_image.yml', methods=['POST'])
 def upload_image(user_id):

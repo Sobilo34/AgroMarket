@@ -80,3 +80,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"name": "Plantain", "descr
 
 # to upload file
 curl -X POST -F "file=@plantain.jpg"
+
+ALTER TABLE orders ADD COLUMN address VARCHAR(255);
+

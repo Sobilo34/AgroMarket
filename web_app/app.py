@@ -283,6 +283,8 @@ def cart(product_id):
     if not product:
         abort(404, description='Product not found')
     if request.method == 'POST':
+        if current_user.is_anonymous:
+            return redirect(url_for('login_page'))
         user = storage.find_user_by_email(current_user.email)
         data = request.form.to_dict()
         data['user_id'] = user.id

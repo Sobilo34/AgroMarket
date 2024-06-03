@@ -9,11 +9,9 @@
   <form class="form-horizontal" method="post" action="{{ url_for('signup_page') }}" enctype=multipart/form-data>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            <ul>
                 {% for category, message in messages %}
-                    <li class="{{ category }}" role="alert">{{ message }}</li>
+                    <p class="{{ category }}" role="alert">{{ message }}</p>
                 {% endfor %}
-            </ul>
         {% endif %}
     {% endwith %}
     

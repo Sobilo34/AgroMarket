@@ -200,16 +200,20 @@ def product_page(product_id):
 
     return render_template('product.html', cache_id=str(uuid.uuid4()), product=product, user=user)
 
-@login_required
+
 @app.route('/products/<product_id>', strict_slashes=False)
 def product_detail(product_id):
     """ the page for product details of a particular product"""
-    user = storage.find_user_by_email(current_user.email)
     url = getenv('AGRO_API_URL') + f'/products/{product_id}'
+    image_url = getenv('AGRO_API_URL') + f'/products/{product_id}/images'
+
     response = requests.get(url)
     if response.status_code == 200:
         product = response.json()
-        return render_template('product_detail.html', cache_id=str(uuid.uuid4()), product=product, user=user)
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            product['images'] = response.json()
+        return render_template('product_detail.html', cache_id=str(uuid.uuid4()), product=product)
     else:
         flash('Product not found', 'alert alert-danger')
         return redirect(url_for('index'))
@@ -261,13 +265,28 @@ def sellers_dashboard():
            methods=['GET', 'POST'])
 def cart(product_id):
     """ retrieves the product and redirect to the cart route"""
-    cart = {}
-    if request.method == 'GET':
-        product = storage.get(Product, product_id)
-        if not product:
-            abort(404, description='Product not found')
+    product = storage.get(Product, product_id)
+    if not product:
+        abort(404, description='Product not found')
     if request.method == 'POST':
-        pass
+        user = storage.find_user_by_email(current_user.email)
+        data = request.form.to_dict()
+        data['user_id'] = user.id
+        data['product_id'] = product.id
+        data_json = json.dumps(data)
+        url = getenv('AGRO_API_URL') + '/orders'
+        response = requests.post(url, data=data_json,
+                                 headers={'Content-Type': 'application/json'})
+        print(response.status_code)
+        if response.status_code == 201:
+            quantity = product.quantity - int(data['quantity'])
+            product.quantity = quantity
+            product.save()
+            flash('Product added to cart successfully', 'alert alert-success')
+            return redirect(url_for('product_detail', product_id=product_id))
+        else:
+            flash('Product not added to cart', 'alert alert-danger')
+        return redirect(url_for('product_detail', product_id=product_id))
     return render_template('cart.html', cache_id=str(uuid.uuid4()),
                            product=product)
 

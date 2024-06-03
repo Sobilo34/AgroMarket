@@ -7,6 +7,14 @@
 
 <div class="container content">
   <h2 class='text-center'>{{ product.name }}</h2>
+  <hr />
+  {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}" role="alert">{{ message }}</p>
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
   <br />
     <div class="row">
         <!-- product image -->
@@ -21,17 +29,11 @@
           
               <!-- Wrapper for slides -->
               <div class="carousel-inner">
-                <div class="item active">
-                  <img src="../static/images/upload/rice.jpg" alt="Los Angeles" style="width:100%;">
+                {% for image in product.images %}
+                <div class="item {% if loop.first %}active{% endif %}">
+                  <img src="../static/images/upload/product/{{ image.url }}" alt="{{ product.name }}" style="width:100%;">
                 </div>
-          
-                <div class="item">
-                  <img src="../static/images/upload/rice2.jpg" alt="Chicago" style="width:100%;">
-                </div>
-              
-                <div class="item">
-                  <img src="../static/images/upload/rice3.jpg" alt="New york" style="width:100%;">
-                </div>
+                {% endfor %}
               </div>
           
               <!-- Left and right controls -->
@@ -47,27 +49,59 @@
         </div>
 
         <!-- product details -->
+    <div class="col-md-6">
+      <p><strong>Product Name:</strong> {{ product.name }}</p>
+      <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+      <p><strong>Price:</strong> {{ product.price }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p><strong>Category:</strong> {{ product.category }}</p>
+      <p><strong>Created At:</strong> {{ product.created_at }}</p>
+      <p><strong>Updated At:</strong> {{ product.updated_at }}</p>
+      <p><strong>Image:</strong> {{ product.image }}</p>
+      <div class="row">
         <div class="col-md-6">
-        <p><strong>Product Name:</strong> {{ product.name }}</p>
-        <p><strong>Quantity:</strong> {{ product.quantity }}</p>
-        <p><strong>Price:</strong> {{ product.price }}</p>
-        <p><strong>Description:</strong> {{ product.description }}</p>
-        <p><strong>Category:</strong> {{ product.category }}</p>
-        <p><strong>Created At:</strong> {{ product.created_at }}</p>
-        <p><strong>Updated At:</strong> {{ product.updated_at }}</p>
-        <p><strong>Image:</strong> {{ product.image }}</p>
-        <div class="row">
-            <div class="col-md-6">
-                <a href="{{ url_for('index') }}" class="btn btn-success">Back</a>
-            </div>
-            <div class="col-md-6">
-                <!-- Add to Cart Button -->
-                <a href="{{ url_for('cart', product_id=product.id) }}" class="btn btn-success btn-lg">Place Order</a>
-            </div>
+          <a href="{{ url_for('index') }}" class="btn btn-success btn-block">Back</a>
         </div>
+        <div class="col-md-6">
+          <!-- Add to Cart Button -->
+          <button id="placeOrderBtn" class="btn btn-primary btn-block">Place Order</button>
         </div>
+      </div>
+      <div id="checkout-form" class="mt-4" style="display:none;">
+        <h4>Enter your address</h4>
+        <form method="post" action="{{ url_for('cart', product_id=product.id) }}">
+          <div class="form-group">
+            <textarea id="address" name="address" rows="5" cols="100" class="form-control" placeholder="Your delivery address"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control quantity-input" name="quantity" value="1" min="1" max="{{ product.quantity }}">
+          </div>
+          <div class="form-group">
+            <label for="total-price">Total Price:</label>
+            <input type="text" class="form-control total-price-input" name="total_price" value="{{ product.price }}" readonly>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
     </div>
     
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('#placeOrderBtn').click(function() {
+      $('#checkout-form').toggle();
+    });
+
+    $('.quantity-input').on('input', function() {
+      let quantity = $(this).val();
+      let price = {{ product.price }};
+      let totalPrice = quantity * price;
+      $('.total-price-input').val(totalPrice);
+    });
+  });
+</script>
 
 {% endblock %}

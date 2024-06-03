@@ -21,8 +21,33 @@ def get_orders():
     """
     all_orders = storage.all(Order).values()
     list_orders = []
+
     for order in all_orders:
-        list_orders.append(order.to_dict())
+        obj = order.to_dict()
+
+        # Add user information to the order dictionary
+        user = {
+            'id': order.user.id,
+            'email': order.user.email,
+            'phone': order.user.phone,
+            'first_name': order.user.first_name,
+            'last_name': order.user.last_name,
+            'address': order.user.location
+        }
+        obj['user'] = user
+
+        # Add product information to the order dictionary
+        product = {
+            'id': order.product.id,
+            'name': order.product.name,
+            'description': order.product.description,
+            'price': order.product.price,
+            'image': order.product.cover_img
+        }
+        obj['product'] = product
+
+        list_orders.append(obj)
+
     return jsonify(list_orders)
 
 
@@ -65,15 +90,15 @@ def post_order():
     """
     if not request.get_json():
         abort(400, description="Not a JSON")
-
+    print(request.get_json())
     if 'user_id' not in request.get_json():
-        abort(400, description="Missing user_id")
+        abort(401, description="Missing user_id")
     if 'product_id' not in request.get_json():
-        abort(400, description="Missing product_id")
+        abort(402, description="Missing product_id")
     if 'quantity' not in request.get_json():
-        abort(400, description="Missing quantity")
+        abort(403, description="Missing quantity")
     if 'total_price' not in request.get_json():
-        abort(400, description="Missing total_price")
+        abort(404, description="Missing total_price")
 
     data = request.get_json()
     instance = Order(**data)

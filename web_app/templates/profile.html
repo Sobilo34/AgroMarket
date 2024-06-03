@@ -5,126 +5,130 @@
 {% block content %}
 <div class="container content mt-5">
     <h1 class="text-center mb-4">My Profile</h1>
-    <div class="row">
-        <div class="col-lg-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}" role="alert">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="d-flex justify-content-center">
+        <div class="w-30" style="padding: 60px;">
             <div class="card mb-4">
-                <div class="card-body text-center">
-                    <img src="../static/images/upload/profile/{{ user.profile_pic }}" alt="{{ user.first_name }}"
+                <div class="card-body text-center" style="margin-top: 10px;">
+                    <img src="{{ url_for('static', filename='images/upload/profile/' ~ user.profile_pic) }}" alt="{{ user.first_name }}"
                          class="rounded-circle img-fluid" style="width: 150px;">
-                    <h5 class="my-3">{{ user.first_name }} {{ user.last_name }}</h5>
-                    <p class="text-muted mb-1">Cash crops Farmer</p>
-                    <p class="text-muted mb-4">{{ user.location }}</p>
+                    <h5 class="my-3">Full Name: {{ user.first_name }} {{ user.last_name }}</h5>
+                    <p class="text-muted mb-1">Cash crops Farmer</p><br>
+                    <p class="text-muted mb-0">Phone Number: {{ user.phone }}</p><br>
+                    <p class="text-muted mb-0">Email Address: {{ user.email }}</p><br>
+                    <p class="text-muted mb-4">Location: {{ user.location }}</p><br>
+
+                    <div class="card-body text-center">
+                        <button type="button" class="btn btn-primary mb-2" id="update-profile-btn">Update Profile</button>
+                        <button type="button" class="btn btn-danger" id="delete-account-btn" data-user-id="{{ user.id }}">Delete Account</button>
+
+                    </div>
+                    <br>
                 </div>
             </div>
 
-            <div class="card mb-4">
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <i class="fas fa-phone fa-lg text-secondary"></i>
-                            <p class="mb-0">{{ user.phone }}</p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <i class="fab fa-whatsapp fa-lg text-success"></i>
-                            <p class="mb-0">WhatsApp</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <div id="profile-form" class="justify-content-center">
+                <h3 class="text-center">Update Your Profile</h3>
+                <form method="post" action="{{ url_for('profile', user_id=user.id) }}">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Firstname:</label>
+                        <div class="col-sm-14" style="margin-left: 3px; margin-right: 3px;">
+                            <input type="text" class="form-control" style="width: 100%;" id="text" placeholder="Your Firstname" name="first_name" value="{{ user.first_name }}">
+                        </div>
+                    </div>
 
-            <div class="card mb-4">
-                <div class="card-body text-center">
-                    <button type="button" class="btn btn-primary mb-2">Update Profile</button>
-                    <button type="button" class="btn btn-danger">Delete Account</button>
-                </div>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Lastname:</label>
+                        <div class="col-sm-14" style="margin-left: 3px; margin-right: 3px;">
+                            <input type="text" class="form-control" style="width: 100%;" id="lastname" placeholder="Your Lastname" name="last_name" value="{{ user.last_name }}">
+                        </div>
+                    </div>
 
-        <div id="checkout-form" class="mt-4" style="display:none;">
-            <h4>Enter your address</h4>
-            <form method="post" action="{{ url_for('profile', user_id=user.id) }}">
-              <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" class="form-control" id="address" name="address" required>
-              </div>
-              <div class="form-group">
-                <label for="quantity">Quantity:</label>
-                <input type="text" class="form-control quantity-input" name="quantity" disabled>
-              </div>
-              <div class="form-group">
-                <label for="total-price">Total Price:</label>
-                <input type="text" class="form-control total-price-input" name="total_price" disabled>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-        </div>
-        
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            // Update total price based on quantity
-            document.querySelector('.quantity').addEventListener('input', function() {
-              var quantity = parseInt(this.value);
-              var price = parseFloat(document.querySelector('.price').innerText);
-              var totalPrice = quantity * price;
-              document.querySelector('.total-price').value = totalPrice.toFixed(2);
-            });
-        
-            // Show checkout form on button click
-            document.querySelector('.checkout-btn').addEventListener('click', function() {
-              var quantity = document.querySelector('.quantity').value;
-              var totalPrice = document.querySelector('.total-price').value;
-        
-              // Update the hidden form fields
-              document.querySelector('.quantity-input').value = quantity;
-              document.querySelector('.total-price-input').value = totalPrice;
-        
-              document.getElementById('checkout-form').style.display = 'block';
-            });
-          });
-        </script>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Email:</label>
+                        <div class="col-sm-14" style="margin-left: 3px; margin-right: 3px;">
+                            <input type="email" class="form-control" style="width: 100%;" id="email" placeholder="Enter email" name="email" value="{{ user.email }}">
+                        </div>
+                    </div>
 
-        <div class="col-lg-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Full Name</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Phone Number:</label>
+                        <div class="col-sm-14" style="margin-left: 3px; margin-right: 3px;">
+                            <input type="text" class="form-control" style="width: 100%;" id="phone" placeholder="Enter email" name="phone" value="{{ user.phone }}">
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Email</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">{{ user.email }}</p>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="location">Location:</label>
+                        <div class="col-sm-14" style="margin-left: 3px; margin-right: 3px;">
+                            <textarea id="location" name="location" rows="3" style="width: 100%;" placeholder="Your location">{{ user.location }}</textarea>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Mobile Number</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">+{{ user.phone }}</p>
-                        </div>
+
+                    <div class="card-body text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-danger" id="cancel-update-btn">Cancel</button>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Address</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">{{ user.location }}</p>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Handling of the "Update Profile" and "Delete Account" buttons
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Show profile form on "Update Profile" button click
+    document.getElementById('update-profile-btn').addEventListener('click', function() {
+      document.getElementById('profile-form').style.display = 'block';
+    });
+    
+    // Hide profile form on "Cancel" button click
+    document.getElementById('cancel-update-btn').addEventListener('click', function() {
+      document.getElementById('profile-form').style.display = 'none';
+    });
+  });
+
+//   Handling of "Delete Account" button
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Show profile form on "Update Profile" button click
+    document.getElementById('update-profile-btn').addEventListener('click', function() {
+      document.getElementById('profile-form').style.display = 'block';
+    });
+    
+    // Hide profile form on "Cancel" button click
+    document.getElementById('cancel-update-btn').addEventListener('click', function() {
+      document.getElementById('profile-form').style.display = 'none';
+    });
+
+    // Handle the "Delete Account" button click
+    document.getElementById('delete-account-btn').addEventListener('click', function() {
+        if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+            var userId = this.getAttribute('data-user-id');
+            fetch(`/profile`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: userId })
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        }
+    });
+});
+
+</script>
+
 {% endblock %}

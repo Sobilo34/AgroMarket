@@ -185,3 +185,9 @@ footer {
     padding: 0px 5px !important;
     font-size: 12px !important;
 }
+
+#profile-form {
+    display:none;
+    position: relative;
+    top: 50px;
+}

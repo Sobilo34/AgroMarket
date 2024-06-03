@@ -125,11 +125,21 @@ def profile():
         data_json = json.dumps(data)
         response = requests.put(url, data=data_json,
                                 headers={'Content-Type': 'application/json'})
-        if response.status_code == 201:
+        if response.status_code == 200:
             flash('Profile updated Successfully', 'alert alert-success')
         else:
             flash('Profile update failed', 'alert alert-danger')
         return redirect(url_for('profile'))
+    
+    if request.method == 'DELETE':
+        url = getenv('AGRO_API_URL') + f'/users/{user.id}'
+        response = requests.delete(url)
+        if response.status_code == 200:
+            flash('Profile deleted Successfully', 'alert alert-success')
+            return jsonify({'message': 'Profile deleted successfully'}), 200
+        else:
+            flash('Profile deletion failed', 'alert alert-danger')
+            return jsonify({'message': 'Profile deletion failed'}), 500
 
     return render_template('profile.html',
                            cache_id=str(uuid.uuid4()), user=user)

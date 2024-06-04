@@ -71,7 +71,7 @@
         <h4>Enter your address</h4>
         <form method="post" action="{{ url_for('cart', product_id=product.id) }}">
           <div class="form-group">
-            <textarea id="address" name="address" rows="5" cols="100" class="form-control" placeholder="Your delivery address"></textarea>
+            <textarea id="address" name="address" rows="5" cols="100" class="form-control" placeholder="Your delivery address" required></textarea>
           </div>
           <div class="form-group">
             <label for="quantity">Quantity:</label>

@@ -10,7 +10,7 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
                 {% for category, message in messages %}
-                    <p class="{{ category }}" role="alert">{{ message }}</p>
+                    <p class="{{ category }} text-center" role="alert">{{ message }}</p>
                 {% endfor %}
         {% endif %}
     {% endwith %}
@@ -79,7 +79,7 @@
 
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Create Account</button>
+        <button type="submit" class="btn btn-success">Create Account</button>
       </div>
     </div>
     <h4 style="margin-top: 50px; text-align: center; color: black;">Already have an Account? <a href="{{ url_for('login_page') }}"> Login</a></h4>

@@ -136,10 +136,10 @@ def profile():
         response = requests.delete(url)
         if response.status_code == 200:
             flash('Profile deleted Successfully', 'alert alert-success')
-            return jsonify({'message': 'Profile deleted successfully'}), 200
+            return redirect(url_for('login_page'))
         else:
             flash('Profile deletion failed', 'alert alert-danger')
-            return jsonify({'message': 'Profile deletion failed'}), 500
+            return redirect(url_for('profile'))
 
     return render_template('profile.html',
                            cache_id=str(uuid.uuid4()), user=user)

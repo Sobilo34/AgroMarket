@@ -8,7 +8,7 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <p class="{{ category }}" role="alert">{{ message }}</p>
+                <p class="{{ category }} text-center" role="alert">{{ message }}</p>
             {% endfor %}
         {% endif %}
     {% endwith %}
@@ -52,9 +52,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="email">Email:</label>
+                        <label class="control-label col-sm-2" for="email">Change Password?:</label>
                         <div class="col-sm-14" style="margin-left: 3px; margin-right: 3px;">
-                            <input type="email" class="form-control" style="width: 100%;" id="email" placeholder="Enter email" name="email" value="{{ user.email }}">
+                            <input type="password" class="form-control" style="width: 100%;" id="password" placeholder="new password" name="password">
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="card-body text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-danger" id="cancel-update-btn">Cancel</button>
                     </div>
                 </form>
@@ -125,6 +125,8 @@
                 console.error('Error:', error);
                 alert('An error occurred. Please try again.');
             });
+            alert('Your account has been deleted.');
+            window.location.href = '/';
         }
     });
 });

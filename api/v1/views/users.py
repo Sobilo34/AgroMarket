@@ -74,10 +74,17 @@ def delete_user(user_id):
     """
 
     user = storage.get(User, user_id)
-
     if not user:
         abort(404)
 
+    image_path = os.path.join('static/images/upload/profile/', user.profile_pic)
+    
+    # Check if the image exists
+    if os.path.exists(image_path):
+        try:
+            os.remove(image_path)
+        except Exception as e:
+            abort(404, description=f"Error deleting image: {e}")
     storage.delete(user)
     storage.save()
 
@@ -121,11 +128,13 @@ def put_user(user_id):
     if not request.get_json():
         abort(400, description="Not a JSON")
 
-    ignore = ['id', 'email', 'created_at', 'updated_at']
+    ignore = ['id', 'email', 'created_at', 'updated_at', 'password']
 
     data = request.get_json()
     for key, value in data.items():
-        if key not in ignore:
+        if key == 'password' and value != '':
+            user.set_password(value)
+        elif key not in ignore:
             setattr(user, key, value)
     storage.save()
     return make_response(jsonify(user.to_dict()), 200)

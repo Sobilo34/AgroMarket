@@ -296,7 +296,7 @@ def orders():
     response = requests.get(url)
     if response.status_code == 200:
         orders = response.json()
-        return render_template('order.html', cache_id=str(uuid.uuid4()), orders=orders)
+        return render_template('order.html', cache_id=str(uuid.uuid4()), data=orders)
     else:
         flash('Orders not found', 'alert alert-danger')
         return redirect(url_for('index'))

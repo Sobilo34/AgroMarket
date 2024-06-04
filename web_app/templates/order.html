@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container content">
-    <h2 class="text-center">{{ user.first_name }} {{ user.last_name }}'s Orders</h2>
+    <h2 class="text-center">{{ orders[0].order.user.first_name }} {{ orders[0].order.user.last_name }}'s Orders</h2>
     <br />
     <table class="table table-striped">
         <thead>

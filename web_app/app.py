@@ -78,9 +78,14 @@ def signup_page():
                 flash('Account created successfully', 'alert alert-success')
                 return redirect(url_for('login_page'))
             else:
-                flash('Image upload failed', 'alert alert-danger')
+                flash('Account created, but Image upload failed', 'alert alert-danger')
                 # session['form_data'] = data  # Store form data in session
                 return redirect(url_for('signup_page'))
+        elif user_response.status_code == 409:
+            flash('Email already exists', 'alert alert-danger')
+            # session['form_data'] = data  # Store form data in session
+            return redirect(url_for('signup_page'))
+            
         else:
             flash('Account creation failed, check the form', 'alert alert-danger')
             # session['form_data'] = data  # Store form data in session
@@ -291,7 +296,7 @@ def orders():
     response = requests.get(url)
     if response.status_code == 200:
         orders = response.json()
-        return render_template('order.html', cache_id=str(uuid.uuid4()), data=orders)
+        return render_template('order.html', cache_id=str(uuid.uuid4()), orders=orders)
     else:
         flash('Orders not found', 'alert alert-danger')
         return redirect(url_for('index'))

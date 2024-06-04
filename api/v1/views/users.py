@@ -75,9 +75,10 @@ def delete_user(user_id):
 
     user = storage.get(User, user_id)
     if not user:
-        abort(404)
+        abort(404, description="User not found")
 
-    image_path = os.path.join('static/images/upload/profile/', user.profile_pic)
+    image_path = os.path.join('web_app/static/images/upload/profile',
+                              user.profile_pic if user.profile_pic else '')
     
     # Check if the image exists
     if os.path.exists(image_path):
@@ -107,6 +108,9 @@ def post_user():
         if field not in data:
             abort(400, description=f"Missing {field}")
 
+    # check if user already exists
+    if storage.find_user_by_email(data.get('email')):
+        abort(409, description="User already exists")
     instance = User(**data)
     instance.set_password(data.get('password'))
     instance.save()

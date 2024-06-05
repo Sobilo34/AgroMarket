@@ -156,6 +156,8 @@ def get_user_orders(user_id):
 
     for order in orders:
         obj = order.to_dict()
+        obj['created_at'] = order.created_at.strftime('%Y-%m-%d %H:%M')
+        obj['updated_at'] = order.updated_at.strftime('%Y-%m-%d %H:%M')
 
         # Add user information to the order dictionary
         user = {

@@ -1,332 +1,109 @@
-<!doctype html>
-<html>
-<head>
-    <title>AgroMarket: A Farmers Market</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/landing.css') + '?' + cache_id }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='scripts/landing.js') + '?' + cache_id }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<img src="{{ url_for('static', filename='images/Farmer hub logo.jpg') }}" alt="Our logo" id="top_logo">
-<div class="overlay"></div>
-<span class="banner_content">
-    <h2><i>Harvest the future: Your one-stop shop for buying and selling farm produce</i></h2>
-    <div class="topnav">
-        <a class="active1" href="#home"><h4>BUY</h4></a>
-        <a class="active2" href="#about"><h4>SELL</h4></a>
-        <input type="text" placeholder="   Search Catalogue..">
-    </div>
-</span>
+{% block title %}: Home{% endblock %}
 
-<div id="heda">
-    <span id="lolo">
-    {% if current_user.is_authenticated %}
-        <a href="{{ url_for('sellers_dashboard') }}">Dashboard</a>
-        <a href="#">Gain Customers</a>
-        <a href="#">Sell Product</a>
-        <a href="#">Logout</a>
-        {% else %}
-        <a href="{{ url_for('signup_page') }}">Create Account</a>
-        <a href="{{ url_for('login_page') }}">Gain Customers</a>
-        <a href="{{ url_for('login_page') }}">Sell Product</a>
-        <a href="{{ url_for('login_page') }}">Buy Product</a>
-    {% endif %}
+{% block content %}
 
-    </span>
+    <div class="slider">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
 
-    <span class="heda_links">
-        <a href="{{ url_for('account_type') }}"><h4 id="crat">Create Account</h4></a>
-        <br>
-        <img src="{{ url_for('static', filename='images/profile.png') }}" alt="my account" id="crat_img">
-        <a href="{{ url_for('login_page') }}"><h3 id="exat">My Account</h3></a>
-    </span>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="w-100" src="../static/images/carousel-1.jpg" alt="Image">
+                    <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
+                        <div class="text-start p-5 slider_content">
+                            <h3 class="text-white">Organic Vegetables</h3>
+                            <h1 class="display-1 text-white mb-md-4">Organic Vegetables For Healthy Life</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Explore</a>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Contact</a>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="header_caption">
-        <h1>AgroMarket</h1><br>
-        <h5>Join Now, Earn better</h5>
-        <h5>AgroMarket is a platform that connects farmers to buyers</h5>
-    </div>
-</div>
-
-<div class="sliding">
-    <div class="mySlides fade">
-        <img src="{{ url_for('static', filename='images/farm 1.jpg') }}" style="width: 100%; height: 550px;">
-    </div>
-    <div class="mySlides fade">
-        <img src="{{ url_for('static', filename='images/farm 5 .jpg') }}" style="width: 100%; height: 550px;">
-    </div>
-    <div class="mySlides fade">
-        <img src="{{ url_for('static', filename='images/farm 3.jpg') }}" style="width: 100%; height: 550px;">
-    </div>
-    <div class="mySlides fade">
-        <img src="{{ url_for('static', filename='images/farm 4.jpg') }}" style="width: 100%; height: 550px;">
-    </div>
-</div>
-
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-
-<script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 5000);
-    }
-</script>
-
-<div class="page_des">
-    <h1>About Us</h1>
-    <hr id="hr_1">
-    <hr id="hr_2">
-    <h4>
-        Agrospace Nigeria is an online market confluence for farmers to sell farm produce to different customers at a good price.
-        It enables the farmers to find their best business partner and sell at a good rate.
-        Agrospace Nigeria offers more features like enabling investment in farm business,
-        offering farming orientation for farmers, and building a community for buyers and sellers of farm produce.
-        Agrospace Nigeria is an online market confluence for farmers to sell farm produce to different customers at a good price.
-        It enables the farmers to find their best business partner and sell at a good rate.
-        Agrospace Nigeria offers more features like enabling investment in farm business,
-        offering farming orientation for farmers, and building a community for buyers and sellers of farm produce.
-    </h4>
-</div>
-
-<div id="side_bar"></div>
-
-<div class="gallery">
-    <!-- First column -->
-    <div class="first_col">
-        <div class="container1">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image1 round-img">
-            <div class="overlay1">
-                <div class="text1">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
+                <div class="item">
+                    <img class="w-100" src="../static/images/carousel-2.jpg" alt="Image">
+                    <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center" style="margin-top: 100px;">
+                        <div class="text-start p-5 slider_content">
+                            <h3 class="text-white">Organic Fruits</h3>
+                            <h1 class="display-1 text-white mb-md-4">Organic Fruits For Better Health</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Explore</a>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Contact</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <div class="container2">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image2">
-            <div class="overlay2">
-                <div class="text2">
-                    <h3>Image Description</h3>
-                    <h5>2020 Inter-house Sport</h5>
+
+        <div class="screenshots">
+            <img src="../static/images/land-pics-3.PNG" alt="Screenshot 1" style="margin-top: -20px;">
+            <img src="../static/images/Land-pics-2.PNG" alt="Screenshot 2">
+            <img src="../static/images/land-pics-1.PNG" alt="Screenshot 3" style="margin-top: 20px;">
+        </div>
+    </div>
+
+
+
+    <!-- About Start -->
+    <div class="container-fluid about pt-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="d-flex h-100 border border-5 border-primary border-bottom-0 pt-4">
+                        <img class="img-fluid mt-auto mx-auto" src="../static/images/about.png">
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="container3">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image3">
-            <div class="overlay3">
-                <div class="text3">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container4">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image4">
-            <div class="overlay4">
-                <div class="text4">
-                    <h3>Image Description</h3>
-                    <h5>Excursion to Badagry</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container5">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image5">
-            <div class="overlay5">
-                <div class="text5">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container6">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image6">
-            <div class="overlay6">
-                <div class="text6">
-                    <h3>Image Description</h3>
-                    <h5>2020 Inter-house Sport</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container7">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image7">
-            <div class="overlay7">
-                <div class="text7">
-                    <h3>Image Description</h3>
-                    <h5>Excursion to Badagry</h5>
+                <div class="col-lg-5 pb-5">
+                    <div class="mb-3 pb-2">
+                        <h2 class="text-primary text-uppercase">About Us</h2>
+                        <h1 class="display-5">We Produce Organic Food For Your Family</h1>
+                    </div>
+                    <br>
+                    <p class="mb-4">Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et tempor sit. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet magna</p>
+                    <div class="row gx-5 gy-4">
+                        <br><br><br>
+                        <div class="col-sm-6">
+                            <i class="fa fa-seedling display-1 text-secondary"></i>
+                            <h4>100% Organic</h4>
+                            <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <i class="fa fa-award display-1 text-secondary"></i>
+                            <h4>Award Winning</h4>
+                            <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- About End -->
 
-<!-- Second Column -->
-
-<div class="gallery2">
-    <div class="second_col">
-        <div class="container1">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image1 round-img">
-            <div class="overlay1">
-                <div class="text1">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container2">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image2">
-            <div class="overlay2">
-                <div class="text2">
-                    <h3>Image Description</h3>
-                    <h5>2020 Inter-house Sport</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container3">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image3">
-            <div class="overlay3">
-                <div class="text3">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container4">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image4">
-            <div class="overlay4">
-                <div class="text4">
-                    <h3>Image Description</h3>
-                    <h5>Excursion to Badagry</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container5">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image5">
-            <div class="overlay5">
-                <div class="text5">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container6">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image6">
-            <div class="overlay6">
-                <div class="text6">
-                    <h3>Image Description</h3>
-                    <h5>2020 Inter-house Sport</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container7">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image7">
-            <div class="overlay7">
-                <div class="text7">
-                    <h3>Image Description</h3>
-                    <h5>Excursion to Badagry</h5>
+    <div class="features container">
+        <h2 class="text-center">Our Features</h2>
+        <h1 class="display-5 text-white">Why Choose Us!!!</h1>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="d-block bg-white h-100 text-center"></div>
+                    <p class="text-center">At et justo elitr amet sea at. Magna et sit vero at ipsum sit et dolores rebum. Magna sea eos sit dolor, ipsum amet no tempor ipsum eirmod lorem eirmod diam tempor dolor eos diam et et diam dolor ea. Clita est rebum amet dolore sit. Dolor stet dolor duo clita, vero dolor ipsum amet dolore magna lorem erat stet sed vero dolor</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Third Column -->
-
-<div class="gallery3">
-    <div class="third_col">
-        <div class="container1">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image1 round-img">
-            <div class="overlay1">
-                <div class="text1">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container2">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image2">
-            <div class="overlay2">
-                <div class="text2">
-                    <h3>Image Description</h3>
-                    <h5>2020 Inter-house Sport</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container3">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image3">
-            <div class="overlay3">
-                <div class="text3">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container4">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image4">
-            <div class="overlay4">
-                <div class="text4">
-                    <h3>Image Description</h3>
-                    <h5>Excursion to Badagry</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container5">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image5">
-            <div class="overlay5">
-                <div class="text5">
-                    <h3>Image Description</h3>
-                    <h5>2019 Football Competition</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container6">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image6">
-            <div class="overlay6">
-                <div class="text6">
-                    <h3>Image Description</h3>
-                    <h5>2020 Inter-house Sport</h5>
-                </div>
-            </div>
-        </div>
-        <div class="container7">
-            <img src="{{ url_for('static', filename='images/veg.jpg') }}" alt="something" class="image7">
-            <div class="overlay7">
-                <div class="text7">
-                    <h3>Image Description</h3>
-                    <h5>Excursion to Badagry</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <h2>Contact Us</h2>
-    <div class="down_logo">
-        <a href="mailto:adigwedennis@gmail.com"><img src="{{ url_for('static', filename='images/email.png') }}" alt="email_logo" class="_logo"></a>
-        <a href="tel:+2348104910518"><img src="{{ url_for('static', filename='images/Phone.png') }}" alt="phone_logo" class="_logo"></a>
-        <a href="https://wa.me/+2349134422033"><img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="whatsapp_logo" class="_logo"></a>
-        <a href="#"><img src="{{ url_for('static', filename='images/X.png') }}" alt="x_logo" class="_logo"></a>
-        <a href="https://github.com/Sobilo34/AgroMarket"><img src="{{ url_for('static', filename='images/github.png') }}" alt="github_logo" class="_logo"></a>
-    </div>
-</footer>
-
-</body>
-</html>
+{% endblock %}

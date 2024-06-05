@@ -147,10 +147,11 @@ def put_user(user_id):
 @app_views.route('/users/<user_id>/orders', methods=['GET'])
 @swag_from('documentation/user/orders.yml', methods=['GET'])
 def get_user_orders(user_id):
-    """ retrieves all orders of a user """
+    """Retrieves all orders of a user."""
     user = storage.get(User, user_id)
     if not user:
         abort(404)
+    
     orders = user.orders
     list_orders = []
 
@@ -160,7 +161,7 @@ def get_user_orders(user_id):
         obj['updated_at'] = order.updated_at.strftime('%Y-%m-%d %H:%M')
 
         # Add user information to the order dictionary
-        user = {
+        user_info = {
             'id': order.user.id,
             'email': order.user.email,
             'phone': order.user.phone,
@@ -168,21 +169,22 @@ def get_user_orders(user_id):
             'last_name': order.user.last_name,
             'address': order.user.location
         }
-        obj['user'] = user
+        obj['user'] = user_info
 
         # Add product information to the order dictionary
-        product = {
+        product_info = {
             'id': order.product.id,
             'name': order.product.name,
             'description': order.product.description,
             'price': order.product.price,
             'image': order.product.cover_img
         }
-        obj['product'] = product
+        obj['product'] = product_info
 
         list_orders.append(obj)
 
     return jsonify(list_orders)
+
 
 @app_views.route('/users/<user_id>/image', methods=['POST'])
 @swag_from('documentation/user/upload_image.yml', methods=['POST'])

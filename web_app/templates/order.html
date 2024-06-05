@@ -10,12 +10,12 @@
         <thead>
             <tr>
                 <th>Order ID</th>
-                <th>Product Name</th>
+                <th>Product</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
+                <th>Address</th>
                 <th>Order Date</th>
-                <th>Vendor</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,9 +25,22 @@
                 <td>{{ order.product.name }}</td>
                 <td>{{ order.quantity }}</td>
                 <td>{{ order.total_price }}</td>
+                <td>{{ order.address }}</td>
                 <td>{{ order.created_at }}</td>
-                <td>{{ order.user.first_name + ' ' + order.user.last_name }}</td>
-                
+                <td>
+                    {% if order.user.id == current_user.id %}
+                        <form method="POST" action="">
+                            <div class="form-group">
+                                <label for="delivered">Delivered:</label>
+                                <select name="delivered" class="form-control">
+                                    <option value="True" {% if order.delivered %}selected{% endif %}>Yes</option>
+                                    <option value="False" {% if not order.delivered %}selected{% endif %}>No</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

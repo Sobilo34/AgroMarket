@@ -36,8 +36,8 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 {% if not current_user.is_authenticated %}
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ url_for('index') }}" style="color: white; font-size: 17px;">Home</a></li>
-                    <li><a href="{{ url_for('signup_page') }}" style="color: white; font-size: 17px;">Get Started</a></li>
+                    <li class="{% if request.path == url_for('index') %}active{% endif %}"><a href="{{ url_for('index') }}" style="color: white; font-size: 17px;">Home</a></li>
+                    <li class="{% if request.path == url_for('signup_page') %}active{% endif %}"><a href="{{ url_for('signup_page') }}" style="color: white; font-size: 17px;">Get Started</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url_for('signup_page') }}" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -45,9 +45,9 @@
                 </ul>
                 {% else %}
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('index') }}" style="color: white; font-size: 17px;">Home</a></li>
-                    <li class="active"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">All Products</a></li>
-                    <li><a href="{{ url_for('sellers_dashboard') }}" style="color: white; font-size: 17px;">Dashboard</a></li>
+                    <li class="{% if request.path == url_for('index') %}active{% endif %}"><a href="{{ url_for('index') }}" style="color: white; font-size: 17px;">Home</a></li>
+                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">All Products</a></li>
+                    <li class="{% if request.path == url_for('sellers_dashboard') %}active{% endif %}"><a href="{{ url_for('sellers_dashboard') }}" style="color: white; font-size: 17px;">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url_for('profile') }}" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
@@ -55,6 +55,7 @@
                 </ul>
                 {% endif %}
             </div>
+        </div>
         </div>
     </nav>
 

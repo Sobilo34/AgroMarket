@@ -46,7 +46,7 @@ def index():
         data = response.json()
     return render_template('landing.html', data=data, cache_id=str(uuid.uuid4()))
 
-@app.route('/home', strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def home():
     """ the index page of AgroMarket """
     url = getenv('AGRO_API_URL') + '/products'

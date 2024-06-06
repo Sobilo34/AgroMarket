@@ -26,17 +26,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{url_for('index')}}">
                     <img src="{{ url_for('static', filename='images/Farmer hub logo.jpg') }}" width="70" height="70" style="border-radius: 50%; margin-top: -20px;" class="d-inline-block align-top" alt="AgroMarket Logo">
                 </a>
-                <a class="navbar-brand" href="#" style="font-size: 30px; margin-top: -25px; font-family: 'Open Sans', sans-serif;">
+                <a class="navbar-brand" href="{{url_for('home')}}" style="font-size: 30px; margin-top: -25px; font-family: 'Open Sans', sans-serif;">
                     <h2 style="color: white;">Agro<span style="color: gold;">Market</span></h2>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 {% if not current_user.is_authenticated %}
                 <ul class="nav navbar-nav">
-                    <li class="{% if request.path == url_for('index') %}active{% endif %}"><a href="{{ url_for('index') }}" style="color: white; font-size: 17px;">Home</a></li>
+                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">Home</a></li>
                     <li class="{% if request.path == url_for('signup_page') %}active{% endif %}"><a href="{{ url_for('signup_page') }}" style="color: white; font-size: 17px;">Get Started</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -45,8 +45,8 @@
                 </ul>
                 {% else %}
                 <ul class="nav navbar-nav">
-                    <li class="{% if request.path == url_for('index') %}active{% endif %}"><a href="{{ url_for('index') }}" style="color: white; font-size: 17px;">Home</a></li>
-                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">All Products</a></li>
+                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">Home</a></li>
+                    <li class="{% if request.path == url_for('products_page') %}active{% endif %}"><a href="{{ url_for('products_page') }}" style="color: white; font-size: 17px;">All Products</a></li>
                     <li class="{% if request.path == url_for('sellers_dashboard') %}active{% endif %}"><a href="{{ url_for('sellers_dashboard') }}" style="color: white; font-size: 17px;">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

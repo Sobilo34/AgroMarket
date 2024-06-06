@@ -58,12 +58,12 @@
     <div class="row">
         <!-- product image -->
         <div class="col-md-6">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="productCarousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#productCarousel" data-slide-to="1"></li>
+                <li data-target="#productCarousel" data-slide-to="2"></li>
               </ol>
           
               <!-- Wrapper for slides -->
@@ -76,18 +76,18 @@
               </div>
           
               <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <a class="left carousel-control" href="#productCarousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <a class="right carousel-control" href="#productCarousel" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span class="sr-only">Next</span>
               </a>
             </div>
         </div>
 
-        <!-- product details -->
+         <!-- product details -->
     <div class="col-md-6">
       <p><strong>Product Name:</strong> {{ product.name }}</p>
       <p><strong>Quantity:</strong> {{ product.quantity }}</p>
@@ -124,8 +124,7 @@
         </form>
       </div>
     </div>
-    </div>
-    
+  </div>
 </div>
 
 <script>
@@ -136,11 +135,10 @@
 
     $('.quantity-input').on('input', function() {
       let quantity = $(this).val();
-      let price = { product.price };
+      let price = {{ product.price }};
       let totalPrice = quantity * price;
       $('.total-price-input').val(totalPrice);
     });
   });
 </script>
-
 {% endblock %}

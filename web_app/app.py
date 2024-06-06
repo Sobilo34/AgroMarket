@@ -36,8 +36,18 @@ def load_user(user_id):
     return storage.find_user_by_email(user_id)
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/index', strict_slashes=False)
 def index():
+    """ the index page of AgroMarket """
+    url = getenv('AGRO_API_URL') + '/products'
+    data = {}
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+    return render_template('landing.html', data=data, cache_id=str(uuid.uuid4()))
+
+@app.route('/home', strict_slashes=False)
+def home():
     """ the index page of AgroMarket """
     url = getenv('AGRO_API_URL') + '/products'
     data = {}
@@ -112,7 +122,7 @@ def login_page():
             user = User.from_dict(user_data)
             login_user(user)
             flash('Login successfully', 'alert alert-success')
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
         else:
             flash('Please check you login credentials', 'lert alert-danger')
             return redirect(url_for('login_page', data=user))

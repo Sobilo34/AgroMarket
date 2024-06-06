@@ -59,7 +59,7 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <div class="card product-card my-4 mx-auto">
-        <img src="{{ url_for('static', filename='images/upload/' ~ product['cover_img']) }}" alt="Product Image" class="card-image">
+        <img src="{{ url_for('static', filename='images/upload/product/' ~ product['cover_img']) }}" alt="Product Image" class="card-image">
         <div class="card-description">
           <h2>{{ product.name }}</h2>
           <p>{{ product.description }}</p>

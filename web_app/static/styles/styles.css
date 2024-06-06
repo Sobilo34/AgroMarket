@@ -152,10 +152,6 @@ body div .header_caption {
                 top: 20px;
                 height: 180px;
             }
-
-            .carousel-control {
-                display: none;
-            }
             
             .screenshots img {
                 max-width: 45%; /* Adjust image size for smaller screens */

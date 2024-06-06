@@ -4,103 +4,181 @@
 
 {% block content %}
 
-    <div class="slider">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-            </ol>
+<div class="slider">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img class="w-100" src="../static/images/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
-                        <div class="text-start p-5 slider_content">
-                            <h3 class="text-white">Organic Vegetables</h3>
-                            <h1 class="display-1 text-white mb-md-4">Organic Vegetables For Healthy Life</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Explore</a>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img class="w-100" src="../static/images/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center" style="margin-top: 100px;">
-                        <div class="text-start p-5 slider_content">
-                            <h3 class="text-white">Organic Fruits</h3>
-                            <h1 class="display-1 text-white mb-md-4">Organic Fruits For Better Health</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Explore</a>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Contact</a>
-                        </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="item active">
+                <img src="../static/images/carousel-1.jpg" alt="Organic Vegetables">
+                <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
+                    <div class="text-center p-5 slider_content">
+                        <h3 class="text-white">Organic Vegetables</h3>
+                        <h1 class="display-3 text-white mb-4">Organic Vegetables For Healthy Life</h1>
+                        <a href="#" class="btn btn-success py-md-3 px-md-5">Explore</a>
+                        <!-- <a href="#" class="btn btn-outline-light py-md-3 px-md-5">Contact</a> -->
                     </div>
                 </div>
             </div>
 
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <!-- Slide 2 -->
+            <div class="item">
+                <img src="../static/images/carousel-2.jpg" alt="Organic Fruits">
+                <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
+                    <div class="text-center p-5 slider_content">
+                        <h3 class="text-white">Organic Fruits</h3>
+                        <h1 class="display-3 text-white mb-4">Organic Fruits For Better Health</h1>
+                        <a href="#" class="btn btn-success py-md-3 px-md-5">Explore</a>
+                        <!-- <a href="#" class="btn btn-outline-light py-md-3 px-md-5">Contact</a> -->
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="screenshots">
-            <img src="../static/images/land-pics-3.PNG" alt="Screenshot 1" style="margin-top: -20px;">
-            <img src="../static/images/Land-pics-2.PNG" alt="Screenshot 2">
-            <img src="../static/images/land-pics-1.PNG" alt="Screenshot 3" style="margin-top: 20px;">
-        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
+</div>
 
+    <!-- Screenshots -->
+    <div class="screenshots">
+        <img src="../static/images/land-pics-3.PNG" alt="Screenshot 1">
+        <img src="../static/images/Land-pics-2.PNG" alt="Screenshot 2">
+        <img src="../static/images/land-pics-1.PNG" alt="Screenshot 3">
+    </div>
 
     <!-- About Start -->
-    <div class="container-fluid about pt-5">
+    <div class="container-fluid about">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="d-flex h-100 border border-5 border-primary border-bottom-0 pt-4">
-                        <img class="img-fluid mt-auto mx-auto" src="../static/images/about.png">
+                        <img class="img-fluid mt-auto mx-auto" src="../static/images/about.png" alt="About AgroMarket">
                     </div>
                 </div>
                 <div class="col-lg-5 pb-5">
                     <div class="mb-3 pb-2">
-                        <h2 class="text-primary text-uppercase">About Us</h2>
+                        <h2>About Us</h2>
                         <h1 class="display-5">We Produce Organic Food For Your Family</h1>
                     </div>
-                    <br>
-                    <p class="mb-4">Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et tempor sit. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet magna</p>
-                    <div class="row gx-5 gy-4">
-                        <br><br><br>
-                        <div class="col-sm-6">
-                            <i class="fa fa-seedling display-1 text-secondary"></i>
-                            <h4>100% Organic</h4>
-                            <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <i class="fa fa-award display-1 text-secondary"></i>
-                            <h4>Award Winning</h4>
-                            <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                        </div>
-                    </div>
+                    <p class="mb-4">At AgroMarket, we are committed to providing fresh, organic produce that is both healthy and environmentally friendly. Our mission is to connect local farmers directly with consumers, ensuring the best quality food for your family.</p>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
 
-    <div class="features container">
-        <h2 class="text-center">Our Features</h2>
-        <h1 class="display-5 text-white">Why Choose Us!!!</h1>
+    <div class="features features-container">
+        <h1>Why Choose Us!!!</h1>
         <div class="row">
             <div class="col-lg-4">
-                <div class="d-block bg-white h-100 text-center"></div>
-                    <p class="text-center">At et justo elitr amet sea at. Magna et sit vero at ipsum sit et dolores rebum. Magna sea eos sit dolor, ipsum amet no tempor ipsum eirmod lorem eirmod diam tempor dolor eos diam et et diam dolor ea. Clita est rebum amet dolore sit. Dolor stet dolor duo clita, vero dolor ipsum amet dolore magna lorem erat stet sed vero dolor</p>
+                <div class="feature-box text-center">
+                    <i class="fa fa-seedling icon"></i>
+                    <h3>100% Organic</h3>
+                    <p>We provide fresh, organic produce that is free from harmful chemicals. Our food is grown using natural farming methods.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="feature-box text-center">
+                    <i class="fa fa-award icon"></i>
+                    <h3>Award Winning</h3>
+                    <p>We are recognized for our high-quality produce and commitment to sustainability. Join us for a healthier future.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="feature-box text-center">
+                    <i class="fa fa-users icon"></i>
+                    <h3>Community Driven</h3>
+                    <p>We believe in supporting local farmers and fostering a strong community. Together, we grow healthier food and a healthier community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-item">
+                        <img src="../static/images/leke.jpg" alt="Customer 1" class="rounded-circle img-fluid" height="100px" width="100px">
+                        <br>
+                        <p>"AgroMarket has completely changed the way I shop for groceries. The produce is fresh, organic, and delivered right to my door!"</p>
+                        <div class="author">John Doe</div>
+                        <div class="role">Customer</div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-item">
+                        <img src="../static/images/leke.jpg" alt="Customer 2" class="rounded-circle img-fluid" height="100px" width="100px">
+                        <br>
+                        <p>"The quality of the food is exceptional and the service is unbeatable. I highly recommend AgroMarket to anyone looking for organic food."</p>
+                        <div class="author">Jane Smith</div>
+                        <div class="role">Customer</div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-item">
+                        <img src="../static/images/leke.jpg" alt="Farmer" class="rounded-circle img-fluid" height="100px" width="100px">
+                        <br>
+                        <p>"As a local farmer, AgroMarket has helped me connect with buyers who appreciate the value of organic produce. It's been a game-changer for my business."</p>
+                        <div class="author">Farmer Joe</div>
+                        <div class="role">Farmer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="step">
+                        <div class="icon">
+                            <i class="fa fa-user-plus"></i>
+                        </div>
+                        <h4>1. Sign Up</h4>
+                        <p>Create an account to start enjoying the benefits of fresh, organic produce delivered to your door.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="step">
+                        <div class="icon">
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <h4>2. Choose Products</h4>
+                        <p>Browse our wide selection of organic products and add them to your cart for easy checkout.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="step">
+                        <div class="icon">
+                            <i class="fa fa-truck"></i>
+                        </div>
+                        <h4>3. Get Delivery</h4>
+                        <p>Receive your order at your doorstep and enjoy the fresh, organic goodness that AgroMarket provides.</p>
+                    </div>
                 </div>
             </div>
         </div>

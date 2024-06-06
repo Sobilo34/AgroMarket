@@ -18,65 +18,100 @@
 
 <body>
     
-    <nav class="navbar navbar-inverse" style="height: 100px; background-color: #34AD54; border: none; margin-bottom: 0;">
-        <div class="container-fluid" style="margin-top: 25px;">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" onclick="increaseNavHeight()">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" onclick="toggleNavHeight()">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{url_for('index')}}">
-                    <img src="{{ url_for('static', filename='images/Farmer hub logo.jpg') }}" width="70" height="70" style="border-radius: 50%; margin-top: -20px;" class="d-inline-block align-top" alt="AgroMarket Logo">
+                    <img src="{{ url_for('static', filename='images/Farmer hub logo.jpg') }}" width="50" height="50" alt="AgroMarket Logo">
                 </a>
-                <a class="navbar-brand" href="{{url_for('home')}}" style="font-size: 30px; margin-top: -25px; font-family: 'Open Sans', sans-serif;">
-                    <h2 style="color: white;">Agro<span style="color: gold;">Market</span></h2>
+                <a class="navbar-brand" href="#">
+                    <h2>Agro<span>Market</span></h2>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 {% if not current_user.is_authenticated %}
                 <ul class="nav navbar-nav">
-                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">Home</a></li>
-                    <li class="{% if request.path == url_for('signup_page') %}active{% endif %}"><a href="{{ url_for('signup_page') }}" style="color: white; font-size: 17px;">Get Started</a></li>
+                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li class="{% if request.path == url_for('signup_page') or request.path == '/' %}active{% endif %}"><a href="{{ url_for('signup_page') }}">Get Started</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for('signup_page') }}" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="{{ url_for('login_page') }}" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="{{ url_for('signup_page') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="{{ url_for('login_page') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
                 {% else %}
                 <ul class="nav navbar-nav">
-                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}" style="color: white; font-size: 17px;">Home</a></li>
-                    <li class="{% if request.path == url_for('products_page') %}active{% endif %}"><a href="{{ url_for('products_page') }}" style="color: white; font-size: 17px;">All Products</a></li>
-                    <li class="{% if request.path == url_for('sellers_dashboard') %}active{% endif %}"><a href="{{ url_for('sellers_dashboard') }}" style="color: white; font-size: 17px;">Dashboard</a></li>
+                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('home') }}">Home</a></li>
+                    <li class="{% if request.path == url_for('sellers_dashboard') %}active{% endif %}"><a href="{{ url_for('sellers_dashboard') }}">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for('profile') }}" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                    <li><a href="{{ url_for('logout') }}" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li><a href="{{ url_for('profile') }}"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
                 {% endif %}
             </div>
         </div>
-        </div>
     </nav>
-
     {% block content %}
     <!-- Default content goes here -->
     {% endblock %}
     
     <footer>
-        <p style="margin-top: 30px;">&copy; 2024 AgroMarket</p>
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4 footer-about">
+                    <h3>About AgroMarket</h3>
+                    <p>AgroMarket is committed to connecting farmers with buyers through a seamless platform for organic, fresh produce. Join us in promoting a healthier and more sustainable lifestyle.</p>
+                </div>
+                <!-- Quick Links Section -->
+                <div class="col-md-4 footer-links">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Section -->
+                <div class="col-md-4 footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Alx Hub NIgeria</p>
+                    <p><i class="fas fa-phone"></i> +2349134422033, +2346743954895</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@agromarket.com">info@agromarket.com</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Social Media Section -->
+                <div class="col-md-12 footer-social">
+                    <h3>Follow Us</h3>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Footer Bottom -->
+                <div class="col-md-12 footer-bottom">
+                    <p>&copy; 2024 AgroMarket. All Rights Reserved.</p>
+                    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
-        function increaseNavHeight() {
+        function toggleNavHeight() {
             var nav = document.querySelector('.navbar');
-            if (nav.classList.contains('collapsed')) {
-                nav.style.height = '100px';
-                nav.classList.remove('collapsed');
-            } else {
-                nav.style.height = '300px';
-                nav.classList.add('collapsed');
-            }
+            nav.classList.toggle('collapsed-nav');
         }
     </script>
 

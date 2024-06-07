@@ -36,12 +36,12 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 {% if not current_user.is_authenticated %}
                 <ul class="nav navbar-nav">
-                    <li class="{% if request.path == url_for('home') %}active{% endif %}"><a href="{{ url_for('index') }}">Home</a></li>
-                    <li class="{% if request.path == url_for('signup_page') or request.path == '/' %}active{% endif %}"><a href="{{ url_for('signup_page') }}">Get Started</a></li>
+                    <li class="{% if request.path == url_for('index') %}active{% endif %}"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li class="{% if request.path == url_for('home') or request.path == '/' %}active{% endif %}"><a href="{{ url_for('signup_page') }}">Get Started</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for('signup_page') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="{{ url_for('login_page') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li  class="{% if request.path == url_for('signup_page') %}active{% endif %}"><a href="{{ url_for('signup_page') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li  class="{% if request.path == url_for('login_page') %}active{% endif %}"><a href="{{ url_for('login_page') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
                 {% else %}
                 <ul class="nav navbar-nav">
@@ -49,8 +49,8 @@
                     <li class="{% if request.path == url_for('sellers_dashboard') %}active{% endif %}"><a href="{{ url_for('sellers_dashboard') }}">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url_for('profile') }}"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                    <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li  class="{% if request.path == url_for('profile') %}active{% endif %}"><a href="{{ url_for('profile') }}"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+                    <li  class="{% if request.path == url_for('logout') %}active{% endif %}"><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
                 {% endif %}
             </div>

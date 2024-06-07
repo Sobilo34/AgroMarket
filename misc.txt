@@ -83,3 +83,5 @@ curl -X POST -F "file=@plantain.jpg"
 
 ALTER TABLE orders ADD COLUMN address VARCHAR(255);
 
+
+tmux new-session -d 'gunicorn --bind 0.0.0.0:5002 api.v1.app:app'

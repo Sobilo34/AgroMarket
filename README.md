@@ -74,11 +74,11 @@ We welcome contributions from the community to improve AgroMarket. To contribute
 5. Open a pull request
 
 ## Contributors
-<img src="https://github.com/talk2dennis.png" alt="Adigwe Dennis" height="30" width="30" style="border-radius: 50%;">  [Adigwe Dennis](https://github.com/talk2dennis)
+<img src="https://avatars.githubusercontent.com/u/63774376?v=4" alt="Adigwe Dennis" height="30" width="30" style="border-radius: 50%;">  [Adigwe Dennis](https://github.com/talk2dennis)
 
-<img src="https://github.com/Deyonoba.png" alt="Gideon Oba" height="30" width="30" style="border-radius: 50%;">  [Gideon Oba](https://github.com/Deyonoba)
+<img src="https://avatars.githubusercontent.com/u/99018748?v=4" alt="Gideon Oba" height="30" width="30" style="border-radius: 50%;">  [Gideon Oba](https://github.com/Deyonoba)
 
-<img src="https://github.com/Sobilo34.png" alt="Bilal Oyeleke" height="30" width="30" style="border-radius: 50%;">  [Bilal Oyeleke](https://github.com/Sobilo34)
+<img src="https://avatars.githubusercontent.com/u/122975292?v=4" alt="Bilal Oyeleke" height="30" width="30" style="border-radius: 50%;">  [Bilal Oyeleke](https://github.com/Sobilo34)
 
 ## Contact
 For any inquiries, please contact the project contributors:

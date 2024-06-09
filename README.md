@@ -28,12 +28,12 @@ Update the necessary environment variables in the .env file with the database na
 
 ## Usage
 ### To use AgroMarket, follow these steps:
-1. Start the server: `python3 -m api.v1.app`
-2. Open your web browser and visit `http://localhost:5000`
-3. Sign up or log in to your account
-4. Browse through the available products or search for specific items
-5. Add desired products to your cart and proceed to checkout
-6. Complete the payment process
+1. Start the api server: `python3 -m api.v1.app`
+2. Start the web app server: `python3 -m web_app.app
+3. Open your web browser and visit `http://localhost:5000`
+4. Sign up or log in to your account
+5. Browse through the available products or search for specific items
+6. Add desired products to your cart and proceed to checkout
 7. Track the status of your orders in the dashboard
 
 ## API Endpoints

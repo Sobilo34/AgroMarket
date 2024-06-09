@@ -46,7 +46,8 @@ The AgroMarket API provides the following endpoints:
 - `GET /api/v1/users/{id}`: Get details of a specific user
 - `POST /api/v1/users`: Create a new user
 - `PUT /api/v1/users/{id}`: Update details of a specific user
-
+GET /users/<user_id>/orders': Returns all user orders
+POST /users/<user_id>/image': uploads user image
 - `DELETE /api/v1/users/{id}`: Delete a specific user
 
 

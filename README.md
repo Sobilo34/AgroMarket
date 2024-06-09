@@ -32,13 +32,12 @@ Update the necessary environment variables in the .env file with the database na
 2. Start the web app server: `python3 -m web_app.app
 3. Open your web browser and visit `http://localhost:5000`
 4. Sign up or log in to your account
-5. Browse through the available products or search for specific items
+5. Browse through the available products
 6. Add desired products to your cart and proceed to checkout
 7. Track the status of your orders in the dashboard
 
 ## API Endpoints
 The AgroMarket API provides the following endpoints:
-
 
 ### Users
 - `POST /api/v1/login`: Logs a user in
@@ -46,8 +45,8 @@ The AgroMarket API provides the following endpoints:
 - `GET /api/v1/users/{id}`: Get details of a specific user
 - `POST /api/v1/users`: Create a new user
 - `PUT /api/v1/users/{id}`: Update details of a specific user
-GET /users/<user_id>/orders': Returns all user orders
-POST /users/<user_id>/image': uploads user image
+- `GET /users/<user_id>/orders'`: Returns all user orders
+- `POST /users/<user_id>/image'`: uploads user image
 - `DELETE /api/v1/users/{id}`: Delete a specific user
 
 
@@ -57,17 +56,26 @@ POST /users/<user_id>/image': uploads user image
 - `POST /api/v1/products`: Create a new product
 - `PUT /api/v1/products/{id}`: Update details of a specific product
 - `DELETE /api/v1/products/{id}`: Delete a specific product
-GET '/products/<product_id>/images': Retrieves the images of a product
-POST '/products/<product_id>/images': Uploads user image
+- `GET '/products/<product_id>/images'`: Retrieves the images of a product
+- `POST '/products/<product_id>/images'`: Uploads user image
 
 ### Order
-GET /orders: Retrieve a list of all orders.
-POST /orders: Create a new order.
-GET /orders/{id}: Retrieve a specific order by ID.
-PUT /orders/{id}: Update a specific order by ID.
-DELETE /orders/{id}: Delete a specific order by ID.
-GET /orders/{id}/reviews: Retrieve reviews associated with a specific order.
-POST /orders/{id}/reviews: Create a review for a specific order.
+- `GET /orders`: Retrieve a list of all orders.
+- `POST /orders`: Create a new order.
+- `GET /orders/{id}`: Retrieve a specific order by ID.
+- `PUT /orders/{id}`: Update a specific order by ID.
+- `DELETE /orders/{id}`: Delete a specific order by ID.
+- `GET /orders/{id}/reviews`: Retrieve reviews associated with a specific order.
+- `POST /orders/{id}/reviews`: Create a review for a specific order.
+
+### Delivery
+- `GET /deliveries`: Retrieve a list of all deliveries.
+- `POST /deliveries`: Create a new delivery.
+- `GET /deliveries/{id}`: Retrieve a specific delivery by ID.
+- `PUT /deliveries/{id}`: Update a specific delivery by ID.
+- `DELETE /deliveries/{id}`: Delete a specific delivery by ID.
+- `GET /orders/{order_id}/delivery`: Retrieve the delivery associated with a specific order.
+- `POST /orders/{order_id}/delivery`: Create a delivery for a specific order.
 
 For more information on how to use these endpoints, please refer to the API documentation.
 4. Push to the branch: `git push origin feature/your-feature-name`
@@ -87,12 +95,14 @@ We welcome contributions from the community to improve AgroMarket. To contribute
 ## Contributors
 <img src="https://avatars.githubusercontent.com/u/63774376?v=4" alt="Adigwe Dennis" height="30" width="30" style="border-radius: 50%;">  [Adigwe Dennis](https://github.com/talk2dennis)
 
+<img src="https://avatars.githubusercontent.com/u/122975292?v=4" alt="Bilal Oyeleke" height="30" width="30" style="border-radius: 50%;">  [Bilal Oyeleke](https://github.com/Sobilo34)
+
 <img src="https://avatars.githubusercontent.com/u/99018748?v=4" alt="Gideon Oba" height="30" width="30" style="border-radius: 50%;">  [Gideon Oba](https://github.com/Deyonoba)
 
-<img src="https://avatars.githubusercontent.com/u/122975292?v=4" alt="Bilal Oyeleke" height="30" width="30" style="border-radius: 50%;">  [Bilal Oyeleke](https://github.com/Sobilo34)
 
 ## Contact
 For any inquiries, please contact the project contributors:
 - Adigwe Dennis: adigwedennis@gmail.com
-- Gideon Oba: deyonoba@gmail.com
 - Bilal Oyeleke: bilalsolih60@gmail.com
+- Gideon Oba: deyonoba@gmail.com
+

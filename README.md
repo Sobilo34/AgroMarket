@@ -53,11 +53,21 @@ POST /users/<user_id>/image': uploads user image
 
 ### Products
 - `GET /api/v1/products`: Get a list of all products
-
 - `GET /api/v1/products/{id}`: Get details of a specific product
 - `POST /api/v1/products`: Create a new product
 - `PUT /api/v1/products/{id}`: Update details of a specific product
 - `DELETE /api/v1/products/{id}`: Delete a specific product
+GET '/products/<product_id>/images': Retrieves the images of a product
+POST '/products/<product_id>/images': Uploads user image
+
+### Order
+GET /orders: Retrieve a list of all orders.
+POST /orders: Create a new order.
+GET /orders/{id}: Retrieve a specific order by ID.
+PUT /orders/{id}: Update a specific order by ID.
+DELETE /orders/{id}: Delete a specific order by ID.
+GET /orders/{id}/reviews: Retrieve reviews associated with a specific order.
+POST /orders/{id}/reviews: Create a review for a specific order.
 
 For more information on how to use these endpoints, please refer to the API documentation.
 4. Push to the branch: `git push origin feature/your-feature-name`
